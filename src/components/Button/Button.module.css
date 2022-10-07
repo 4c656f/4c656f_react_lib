@@ -1,0 +1,10 @@
+.container{
+    background-color: var(--element_action_bg);
+
+}
+button{
+    /*background-color: var(--main_bg_color);*/
+    font-family: var(--font_family);
+    font-weight: 400;
+    font-size: 50px;
+}

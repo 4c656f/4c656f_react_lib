@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'BasierCircle';
+    src: url("fonts/BasierCircle-Bold.woff2") format('woff2');
+    src: url("fonts/BasierCircle-Regular.woff2") format('woff2');
+    src: url("fonts/BasierCircle-Italic.woff2") format('woff2');
+}
+@font-face {
+    font-family: 'BasierSquare';
+    src: url("fonts/BasierSquare-Bold.woff2") format('woff2');
+    src: url("fonts/BasierSquare-Regular.woff2") format('woff2');
+    src: url("fonts/BasierSquare-Italic.woff2") format('woff2');
+}
+:root{
+
+    /* Elements colors */
+    --main_bg_color: #000000;
+    --element_index_1_bg: #131313;
+    --element_index_2_bg: #1B1B1B;
+    --element_action_bg: #383838;
+    --element_error_bg: #ff5858;
+
+    /* Text colors */
+    --text_color_main: #FFF;
+    --text_color_second: #838383;
+
+    --border_radius: 6px;
+
+
+    /* Text Fonts */
+    --font_family: BasierSquare, sans-serif;
+    --font-weight-index1: 100;
+    --font-weight-index2: 300;
+    --font-weight-index3: 400;
+
+
+    /* Animation */
+    --default_transition: 0.2s;
+}
