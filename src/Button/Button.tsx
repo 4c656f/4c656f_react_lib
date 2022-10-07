@@ -1,9 +1,14 @@
 import React, {ComponentProps, ElementType, FC} from 'react';
 import classes from "./Button.module.css"
-import "../../index.css"
+import "../index.css"
 
+
+export type ButtonType = "text"|"contained"|"outlined"
 
 type ButtonCustomProps<E extends ElementType = ElementType> = {
+    label: string,
+    variant: ButtonType,
+    colorIndex: "",
 
 }
 
@@ -16,9 +21,12 @@ type ButtonProps<E extends ElementType> =
 
 const defaultElement = "button";
 
-const Button:FC = <E extends ElementType = typeof defaultElement>(
+const Button = <E extends ElementType = typeof defaultElement>(
     {
-
+        label,
+        variant,
+        index,
+        ...rest
     }:ButtonProps<E>
 ) => {
 
@@ -26,9 +34,7 @@ const Button:FC = <E extends ElementType = typeof defaultElement>(
 
     
     return (
-        <div className={classes.container}>
-            <button className={"index"}>Insurance</button>
-        </div>
+        <button className={"index"}>Insurance</button>
     );
 };
 
