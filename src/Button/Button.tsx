@@ -1,15 +1,16 @@
 import React, {ComponentProps, ElementType, FC} from 'react';
 import classes from "./Button.module.css"
 import "../index.css"
+import {IColorIndex} from "../types/IColorIndex";
+import {ButtonType} from "../types/IElementType";
 
 
-export type ButtonType = "text"|"contained"|"outlined"
+
 
 type ButtonCustomProps<E extends ElementType = ElementType> = {
     label: string,
     variant: ButtonType,
-    colorIndex: "",
-
+    colorIndex: IColorIndex,
 }
 
 
@@ -25,7 +26,7 @@ const Button = <E extends ElementType = typeof defaultElement>(
     {
         label,
         variant,
-        index,
+        colorIndex,
         ...rest
     }:ButtonProps<E>
 ) => {
@@ -34,7 +35,7 @@ const Button = <E extends ElementType = typeof defaultElement>(
 
     
     return (
-        <button className={"index"}>Insurance</button>
+        <button className={`${classes.container} ${classes[variant]} ${classes[colorIndex]}`}>{label}</button>
     );
 };
 

@@ -1,10 +1,26 @@
 .container{
-    background-color: var(--element_action_bg);
-
-}
-button{
-    /*background-color: var(--main_bg_color);*/
+    all: unset;
     font-family: var(--font_family);
     font-weight: 400;
-    font-size: 50px;
+
+    font-size: 14px;
 }
+.1{
+
+}
+
+.contained{
+
+}
+
+.text{
+
+}
+.text > .1 :hover{
+
+}
+
+.outlined{
+
+}
+
