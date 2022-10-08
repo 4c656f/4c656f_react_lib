@@ -1,0 +1,81 @@
+
+
+/* Colors */
+$index_0_color: #000000;
+$index_0_hover_color: #1e1e1e;
+$index_0_font_color: #fff;
+
+$index_1_color: #131313;
+$index_1_hover_color: #252424;
+$index_1_font_color: #fff;
+
+$index_2_color: #1B1B1B;
+$index_2_hover_color: #333333;
+$index_2_font_color: #fff;
+
+$action_color: #383838;
+$action_hover_color: #424242;
+$action_font_color: #fff;
+
+$error_color: #ff5858;
+
+
+
+
+// Elements scheme
+
+$index_0_element :(
+        "class_name": "0_index",
+        "background" : $index_0_color,
+        "color" : $index_0_font_color,
+        "border" : $index_0_color,
+        "hover" : $index_0_hover_color,
+
+);
+$index_1_element :(
+        "class_name": "1_index",
+        "background" : $index_1_color,
+        "color" : $index_1_font_color,
+        "border" : $index_1_color,
+        "hover" : $index_1_hover_color,
+
+);
+$index_2_element :(
+        "class_name": "2_index",
+        "background" : $index_2_color,
+        "color" : $index_2_font_color,
+        "border" : $index_2_color,
+        "hover" : $index_2_hover_color,
+
+);
+$index_action_element :(
+        "class_name": "action_index",
+        "background" : $action_color,
+        "color" : $action_font_color,
+        "border" : $action_color,
+        "hover" : $action_hover_color
+);
+
+
+$color_schemes: $index_0_element $index_1_element $index_2_element $index_action_element;
+
+
+
+
+
+/* Text colors */
+$text_color_main: #FFF;
+$text_color_second: #838383;
+
+$border_radius: 6px;
+
+
+/* Text Fonts */
+$font_family: 'BasierCircle', sans-serif;
+$font-weight-index1: 100;
+$font-weight-index2: 300;
+$font-weight-index3: 400;
+
+
+/* Animation */
+$default_transition: 0.2s;

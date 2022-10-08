@@ -34,7 +34,7 @@ const Button = <E extends ElementType = typeof defaultElement>(
 
     
     return (
-        <button className={`${classes.container} ${classes[variant]} ${classes[colorIndex]}`}>{label}</button>
+        <button className={`${classes.container} ${classes[variant]} ${classes[`${colorIndex}_index`]}`}>{label}</button>
     );
 };
 

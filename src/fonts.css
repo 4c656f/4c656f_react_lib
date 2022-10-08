@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'BasierCircle';
+    src: url("fonts/BasierCircle-Bold.woff2") format('woff2');
+    src: url("fonts/BasierCircle-Regular.woff2") format('woff2');
+    src: url("fonts/BasierCircle-Italic.woff2") format('woff2');
+}
+@font-face {
+    font-family: 'BasierSquare';
+    src: url("fonts/BasierSquare-Bold.woff2") format('woff2');
+    src: url("fonts/BasierSquare-Regular.woff2") format('woff2');
+    src: url("fonts/BasierSquare-Italic.woff2") format('woff2');
+}

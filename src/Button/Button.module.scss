@@ -1,24 +1,53 @@
-@import "../index.css";
+@import "../variables";
+@import "../fonts.css";
+
 
 .container{
     all: unset;
-    font-family: var(--font_family);
-    border-radius: var(--border_radius);
+    font-family: $font_family;
+    border-radius: $border_radius;
     font-weight: 400;
+    padding: 7px 13px 7px 13px;
 
     font-size: 14px;
 }
 
-.contained{
 
+@each $scheme in $color_schemes {
+
+    .contained.#{map-get($scheme, 'class_name')}  {
+        background-color: map-get($scheme, 'background');
+        color: map-get($scheme, 'color');
+
+        &:hover{
+            background-color: map-get($scheme, 'hover');
+        }
+    }
 }
 
-.text{
+@each $scheme in $color_schemes {
 
+    .text.#{map-get($scheme, 'class_name')}  {
+        color: map-get($scheme, 'color');
+
+        &:hover{
+            background-color: map-get($scheme, 'hover');
+        }
+    }
 }
 
 
-.outlined{
+@each $scheme in $color_schemes {
 
+    .outlined.#{map-get($scheme, 'class_name')}  {
+        color: map-get($scheme, 'color');
+        border: map-get($scheme, 'hover') 1px solid;
+
+        &:hover{
+            background-color: map-get($scheme, 'hover');
+        }
+    }
 }
+
+
 
