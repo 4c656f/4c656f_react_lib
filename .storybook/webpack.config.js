@@ -23,7 +23,31 @@ module.exports = ({config}) => {
             },
         ],
         include: path.resolve(__dirname, '../'),
-    });
+
+    },
+    {
+        test: /\.module\.scss$/,
+            use: [
+        "style-loader",
+        {
+            loader: "css-loader",
+            options: {
+                importLoaders: 1,
+                modules: true,
+            },
+        },
+        'sass-loader'
+    ]
+    },
+
+    {
+        test: /\.scss$/,
+            use: ["style-loader", "css-loader", 'sass-loader'],
+        exclude: /\.module\.scss$/
+    },
+
+
+    );
 
     return config
 

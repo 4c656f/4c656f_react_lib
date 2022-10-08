@@ -1,12 +1,12 @@
+@import "../index.css";
+
 .container{
     all: unset;
     font-family: var(--font_family);
+    border-radius: var(--border_radius);
     font-weight: 400;
 
     font-size: 14px;
-}
-.1{
-
 }
 
 .contained{
@@ -16,9 +16,7 @@
 .text{
 
 }
-.text > .1 :hover{
 
-}
 
 .outlined{
 

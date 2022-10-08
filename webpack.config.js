@@ -22,6 +22,13 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     "style-loader",
+                    "css-loader"
+                ]
+            },
+            {
+                test: /\.module\.scss$/,
+                use: [
+                    "style-loader",
                     {
                         loader: "css-loader",
                         options: {
@@ -29,13 +36,14 @@ module.exports = {
                             modules: true,
                         },
                     },
-                ],
-                include: /\.module\.css$/,
+                    'sass-loader'
+                ]
             },
+
             {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader"],
-                exclude: /\.module\.css$/,
+                test: /\.scss$/,
+                use: ["style-loader", "css-loader", 'sass-loader'],
+                exclude: /\.module\.scss$/
             },
             {
                 test: /\.(ts|tsx)?$/,

@@ -1,6 +1,5 @@
 import React, {ComponentProps, ElementType, FC} from 'react';
-import classes from "./Button.module.css"
-import "../index.css"
+import classes from "./Button.module.scss"
 import {IColorIndex} from "../types/IColorIndex";
 import {ButtonType} from "../types/IElementType";
 
