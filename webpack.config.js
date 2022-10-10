@@ -7,14 +7,28 @@ module.exports = {
     output: {
         filename: "index.js",
         path: path.resolve(__dirname, 'dist'),
-        libraryTarget: "umd",
+        library: {
+            name: '4c656f_react_ui_kit',
+            type: 'umd',
+        },
         clean: true
     },
     resolve: {
         extensions: ['.ts', '.tsx']
     },
     externals: {
-        react: 'react'
+        react: {
+            commonjs: "react",
+            commonjs2: "react",
+            amd: "React",
+            root: "React"
+        },
+        "react-dom": {
+            commonjs: "react-dom",
+            commonjs2: "react-dom",
+            amd: "ReactDOM",
+            root: "ReactDOM"
+        }
     },
     module: {
         rules: [

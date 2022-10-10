@@ -1,11 +1,12 @@
 {
-  "name": "4c656f_react_lib",
+  "name": "4c656f_react_ui_kit",
   "version": "0.0.1",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
     "storybook": "start-storybook -p 6006 -c .storybook",
-    "build-storybook": "build-storybook -c .storybook"
+    "build-storybook": "build-storybook -c .storybook",
+    "pub": "webpack && npm version patch && npm publish"
   },
   "author": "",
   "license": "ISC",
@@ -41,9 +42,11 @@
     "webpack-cli": "^4.10.0"
   },
   "peerDependencies": {
-    "react": "^17.0.2"
+    "react": "*",
+    "react-dom": "*"
   },
   "files": [
     "dist"
   ]
 }
+
