@@ -1,3 +1,54 @@
+body{
+  --index_0_color: #000000;
+  --index_0_hover_color: #1e1e1e;
+  --index_0_font_color: #fff;
+
+  --index_1_color: #131313;
+  --index_1_hover_color: #252424;
+  --index_1_font_color: #fff;
+
+  --index_2_color: #1B1B1B;
+  --index_2_hover_color: #333333;
+  --index_2_font_color: #fff;
+
+  --action_color: #383838;
+  --action_hover_color: #424242;
+  --action_font_color: #fff;
+}
+body[data-theme='light'] {
+  --index_0_color: #000000;
+  --index_0_hover_color: #1e1e1e;
+  --index_0_font_color: #fff;
+
+  --index_1_color: #131313;
+  --index_1_hover_color: #252424;
+  --index_1_font_color: #fff;
+
+  --index_2_color: #1B1B1B;
+  --index_2_hover_color: #333333;
+  --index_2_font_color: #fff;
+
+  --action_color: #383838;
+  --action_hover_color: #424242;
+  --action_font_color: #fff;
+}
+body[data-theme='dark'] {
+  --index_0_color: #000000;
+  --index_0_hover_color: #1e1e1e;
+  --index_0_font_color: #fff;
+
+  --index_1_color: #131313;
+  --index_1_hover_color: #252424;
+  --index_1_font_color: #fff;
+
+  --index_2_color: #1B1B1B;
+  --index_2_hover_color: #333333;
+  --index_2_font_color: #fff;
+
+  --action_color: #383838;
+  --action_hover_color: #424242;
+  --action_font_color: #fff;
+}
 
 
 /* Colors */
@@ -17,7 +68,7 @@ $action_color: #383838;
 $action_hover_color: #424242;
 $action_font_color: #fff;
 
-$error_color: #ff5858;
+
 
 
 
@@ -26,34 +77,34 @@ $error_color: #ff5858;
 
 $index_0_element :(
         "class_name": "0_index",
-        "background" : $index_0_color,
-        "color" : $index_0_font_color,
-        "border" : $index_0_color,
-        "hover" : $index_0_hover_color,
+        "background" : var(--index_0_color),
+        "color" : var(--index_0_font_color),
+        "border" : var(--index_0_color),
+        "hover" : var(--index_0_hover_color),
 
 );
 $index_1_element :(
         "class_name": "1_index",
-        "background" : $index_1_color,
-        "color" : $index_1_font_color,
-        "border" : $index_1_color,
-        "hover" : $index_1_hover_color,
+        "background" : var(--index_1_color),
+        "color" : var(--index_1_font_color),
+        "border" : var(--index_1_color),
+        "hover" : var(--index_1_hover_color),
 
 );
 $index_2_element :(
         "class_name": "2_index",
-        "background" : $index_2_color,
-        "color" : $index_2_font_color,
-        "border" : $index_2_color,
-        "hover" : $index_2_hover_color,
+        "background" : var(--index_2_color),
+        "color" : var(--index_2_font_color),
+        "border" : var(--index_2_color),
+        "hover" : var(--index_2_hover_color),
 
 );
 $index_action_element :(
         "class_name": "action_index",
-        "background" : $action_color,
-        "color" : $action_font_color,
-        "border" : $action_color,
-        "hover" : $action_hover_color
+        "background" : var(--action_color),
+        "color" : var(--action_font_color),
+        "border" : var(--action_color),
+        "hover" : var(--action_hover_color)
 );
 
 

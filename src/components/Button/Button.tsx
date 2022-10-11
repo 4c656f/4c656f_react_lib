@@ -1,8 +1,8 @@
 import React, {ComponentProps, ElementType, FC} from 'react';
 
 import classes from "./Button.module.scss"
-import {IColorIndex} from "../types/IColorIndex";
-import {ButtonType} from "../types/IElementType";
+import {IColorIndex} from "../../types/IColorIndex";
+import {ButtonType} from "../../types/IElementType";
 
 
 type customElementsPick = JSX.IntrinsicElements['button'|'a'];
