@@ -1,35 +1,33 @@
-@import "../../variables";
 @import "../../index.css";
+@import "../../variables";
 
 .container {
+  position: relative;
+
+}
+
+
+
+
+
+
+.toggle {
   all: unset;
+  position: absolute;
+  left: 0%;
+  top:0%;
   color: var(--index_0_text);
   font-family: $font_family;
   transition: $default_transition;
   border-radius: $border_radius;
-
+  cursor: pointer;
 
   @include default_h4;
   @include medium_padding($left: 10px);
-
 }
-
-.container:focus::placeholder {
-  opacity: 0;
-}
-
-.container::placeholder {
-  color: var(--index_1_text);
-  transition: $default_transition;
-
-  @include default_h4($weight: $font-weight-index2)
-
-}
-
-
 @each $scheme in $color_schemes {
 
-  .#{map-get($scheme, 'class_name')} {
+  .toggle.#{map-get($scheme, 'class_name')} {
 
     background-color: map-get($scheme, 'background');
 
@@ -38,4 +36,12 @@
 
     }
   }
+}
+.menu {
+  all: unset;
+  position: absolute;
+  left: 0%;
+  top: calc(0% + 50px);
+  padding: 0;
+  display: none;
 }

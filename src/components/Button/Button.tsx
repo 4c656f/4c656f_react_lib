@@ -4,7 +4,7 @@ import {IColorIndex} from "../../types/IColorIndex";
 import {ButtonType} from "../../types/IElementType";
 
 
-type customElementsPick = JSX.IntrinsicElements['button'|'a'];
+type customElementsPick = JSX.IntrinsicElements['button' | 'a'];
 
 
 type ButtonCustomProps<E extends ElementType = ElementType> = {
@@ -21,14 +21,10 @@ type ButtonProps<E extends ElementType> =
     ButtonCustomProps<E> & Omit<ComponentProps<E>, keyof ButtonCustomProps>
 
 
-
-
 const defaultElement = "button";
 
 
-
-
-const Button:FC<ButtonProps<ElementType>> = <E extends ElementType = typeof defaultElement>(
+const Button: FC<ButtonProps<ElementType>> = <E extends ElementType = typeof defaultElement>(
     {
         label,
         variant,
@@ -37,19 +33,19 @@ const Button:FC<ButtonProps<ElementType>> = <E extends ElementType = typeof defa
         isDisabled,
         as,
         ...rest
-    }:ButtonProps<E>
+    }: ButtonProps<E>
 ) => {
 
     const Element = as || defaultElement;
 
-    
+
     return (
         <Element
             className={`${classes.container}
             ${classes[variant]}
             ${classes[`${colorIndex}_index`]}
-            ${isChecked?classes['checked']:""}
-            ${isDisabled?classes['disabled']:""}
+            ${isChecked ? classes['checked'] : ""}
+            ${isDisabled ? classes['disabled'] : ""}
             `}
             {...rest}
         >
@@ -57,9 +53,6 @@ const Button:FC<ButtonProps<ElementType>> = <E extends ElementType = typeof defa
         </Element>
     );
 };
-
-
-
 
 
 export default Button;

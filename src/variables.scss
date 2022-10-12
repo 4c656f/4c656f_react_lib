@@ -1,5 +1,4 @@
-body{
-
+body {
 
 
   --index_0_color: #000000;
@@ -21,6 +20,7 @@ body{
   --index_1_text: #9E9E9E;
 
 }
+
 body[data-theme='light'] {
   --index_0_color: #F3F4F5;
 
@@ -41,8 +41,8 @@ body[data-theme='light'] {
   --index_1_text: #5E6265;
 
 
-
 }
+
 body[data-theme='dark'] {
 
   --index_0_color: #000000;
@@ -65,36 +65,27 @@ body[data-theme='dark'] {
 }
 
 
-
-
-
-
-
-
-
 // Elements schemes
 
-$index_0_element :(
+$index_0_element: (
         "class_name": "0_index",
         "background" : var(--index_1_color),
         "border" : var(--index_1_color),
         "hover" : var(--index_1_5_color),
 );
-$index_1_element :(
+$index_1_element: (
         "class_name": "1_index",
         "background" : var(--index_3_color),
         "border" : var(--index_3_color),
         "hover" : var(--index_3_5_color),
-
 );
-$index_2_element :(
+$index_2_element: (
         "class_name": "2_index",
         "background" : var(--index_1_color),
         "border" : var(--index_1_color),
         "hover" : var(--index_1_5_color),
-
 );
-$index_action_element :(
+$index_action_element: (
         "class_name": "action_index",
         "background" : var(--index_3_color),
         "border" : var(--index_3_color),
@@ -103,9 +94,6 @@ $index_action_element :(
 
 
 $color_schemes: $index_0_element $index_1_element $index_2_element $index_action_element;
-
-
-
 
 
 /* Text colors */
@@ -126,19 +114,22 @@ $font-size-h2: 18px;
 $font-size-h3: 16px;
 $font-size-h4: 14px;
 
-@mixin default_h1{
+@mixin default_h1 {
   font-size: $font-size-h1;
   font-weight: $font-weight-index1;
 }
-@mixin default_h2{
+
+@mixin default_h2 {
   font-size: $font-size-h2;
   font-weight: $font-weight-index1;
 }
-@mixin default_h3{
+
+@mixin default_h3 {
   font-size: $font-size-h3;
   font-weight: $font-weight-index1;
 }
-@mixin default_h4($size:$font-size-h4, $weight:$font-weight-index1){
+
+@mixin default_h4($size:$font-size-h4, $weight:$font-weight-index1) {
   font-size: $size;
   font-weight: $weight;
 }
@@ -148,26 +139,20 @@ $default_transition: 0.3s;
 
 /* Layouts */
 
-@mixin small_padding($top:7px, $right:13px, $bottom:7px, $left:13px){
-  padding: $top $right $bottom $left;
-}
+@mixin small_padding($vertical:false, $horizontal:false, $top:7px, $right:13px, $bottom:7px, $left:13px) {
 
-@mixin medium_padding($vertical:false, $horizontal:false, $top:7px, $right:13px, $bottom:7px, $left:13px){
-
-  @if($vertical){
+  @if ($vertical) {
 
     padding: $vertical $right $vertical $left;
 
-  }
-  @else if($horizontal){
+  } @else if ($horizontal) {
 
     padding: $top $horizontal $bottom $horizontal;
 
-  }@else if($vertical and $horizontal){
+  } @else if ($vertical and $horizontal) {
 
     padding: $vertical $horizontal $horizontal $horizontal;
-  }
-  @else{
+  } @else {
 
     padding: $top $right $bottom $left;
 
@@ -176,6 +161,46 @@ $default_transition: 0.3s;
 
 }
 
-@mixin large_padding{
+@mixin medium_padding($vertical:false, $horizontal:false, $top:15px, $right:13px, $bottom:15px, $left:13px) {
+
+  @if ($vertical) {
+
+    padding: $vertical $right $vertical $left;
+
+  } @else if ($horizontal) {
+
+    padding: $top $horizontal $bottom $horizontal;
+
+  } @else if ($vertical and $horizontal) {
+
+    padding: $vertical $horizontal $horizontal $horizontal;
+  } @else {
+
+    padding: $top $right $bottom $left;
+
+  }
+
+
+}
+
+@mixin large_padding($vertical:false, $horizontal:false, $top:7px, $right:13px, $bottom:7px, $left:13px) {
+
+  @if ($vertical) {
+
+    padding: $vertical $right $vertical $left;
+
+  } @else if ($horizontal) {
+
+    padding: $top $horizontal $bottom $horizontal;
+
+  } @else if ($vertical and $horizontal) {
+
+    padding: $vertical $horizontal $horizontal $horizontal;
+  } @else {
+
+    padding: $top $right $bottom $left;
+
+  }
+
 
 }

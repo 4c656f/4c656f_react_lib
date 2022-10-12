@@ -1,4 +1,4 @@
-import React, {ComponentProps, ElementType, FC, InputHTMLAttributes} from 'react';
+import React, {FC, InputHTMLAttributes} from 'react';
 import classes from './Input.module.scss'
 import {IColorIndex} from "../../types/IColorIndex";
 
@@ -8,24 +8,20 @@ type InputOwnProps = {
 }
 
 
-
-type ButtonProps= InputOwnProps & Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputOwnProps>
+type ButtonProps = InputOwnProps & Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputOwnProps>
 
 const defaultClasses = [classes['container']]
 
-const Input:FC<ButtonProps> = ({
+const Input: FC<ButtonProps> = ({
                                     className,
                                     colorIndex,
                                     ...rest
-                              }) => {
-
-
-
+                                }) => {
 
 
     return (
         <input
-            className={`${defaultClasses.join(" ")} ${colorIndex?classes[`${colorIndex}_index`]:classes["0_index"]} ${className?className:""}`}
+            className={`${defaultClasses.join(" ")} ${colorIndex ? classes[`${colorIndex}_index`] : classes["0_index"]} ${className ? className : ""}`}
             type={'text'}
 
             {...rest}

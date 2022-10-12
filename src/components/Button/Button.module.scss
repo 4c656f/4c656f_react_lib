@@ -2,77 +2,83 @@
 @import "../../index.css";
 
 
-.container{
-    all: unset;
-    font-family: $font_family;
-    border-radius: $border_radius;
-    cursor: pointer;
+.container {
+  all: unset;
+  font-family: $font_family;
+  border-radius: $border_radius;
+  cursor: pointer;
 
-    transition: $default_transition;
+  transition: $default_transition;
 
-    @include default_h4;
-    @include medium_padding;
+  @include default_h4;
+  @include small_padding;
 }
 
 
 @each $scheme in $color_schemes {
 
-    .contained.#{map-get($scheme, 'class_name')}  {
-        background-color: map-get($scheme, 'background');
-        color: var(--index_0_text);
+  .contained.#{map-get($scheme, 'class_name')} {
+    background-color: map-get($scheme, 'background');
+    color: var(--index_0_text);
 
-        &:hover{
-            background-color: map-get($scheme, 'hover');
-        }
-        &.checked{
+    &:hover {
+      background-color: map-get($scheme, 'hover');
+    }
 
-        }
-        &.disabled{
-
-        }
+    &.checked {
 
     }
+
+    &.disabled {
+
+    }
+
+  }
 }
 
 @each $scheme in $color_schemes {
 
-    .text.#{map-get($scheme, 'class_name')}  {
-        color: var(--index_0_text);
+  .text.#{map-get($scheme, 'class_name')} {
+    color: var(--index_0_text);
 
-        &:hover{
-            background-color: map-get($scheme, 'background');
-        }
-        &.checked{
-
-        }
-        &.disabled{
-
-        }
+    &:hover {
+      background-color: map-get($scheme, 'background');
     }
+
+    &.checked {
+
+    }
+
+    &.disabled {
+
+    }
+  }
 }
 
 
 @each $scheme in $color_schemes {
 
-    .outlined.#{map-get($scheme, 'class_name')}  {
-        color: var(--index_0_text);
-        border: map-get($scheme, 'border') 1px solid;
+  .outlined.#{map-get($scheme, 'class_name')} {
+    color: var(--index_0_text);
+    border: map-get($scheme, 'border') 1px solid;
 
-        &:hover{
-            background-color: map-get($scheme, 'hover');
-        }
-        &.checked{
-
-        }
-        &.disabled{
-
-        }
+    &:hover {
+      background-color: map-get($scheme, 'hover');
     }
+
+    &.checked {
+
+    }
+
+    &.disabled {
+
+    }
+  }
 }
 
-.disabled{
-    color: var(--index_1_text) !important;
-    pointer-events: none !important;
-    cursor: default !important;
+.disabled {
+  color: var(--index_1_text) !important;
+  pointer-events: none !important;
+  cursor: default !important;
 }
 
