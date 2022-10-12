@@ -29,7 +29,6 @@ const ThemeProvider:FC<ThemeProviderProps> = ({
 
 
     useEffect(()=>{
-        console.log(theme)
         document.body.dataset.theme = theme?'dark':'light'
     },[theme])
 

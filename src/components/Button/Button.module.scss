@@ -8,8 +8,9 @@
     border-radius: $border_radius;
     font-weight: 400;
     padding: 7px 13px 7px 13px;
-
+    cursor: pointer;
     font-size: 14px;
+    transition: $default_transition;
 }
 
 
@@ -17,7 +18,7 @@
 
     .contained.#{map-get($scheme, 'class_name')}  {
         background-color: map-get($scheme, 'background');
-        color: map-get($scheme, 'color');
+        color: var(--index_0_text);
 
         &:hover{
             background-color: map-get($scheme, 'hover');
@@ -28,10 +29,10 @@
 @each $scheme in $color_schemes {
 
     .text.#{map-get($scheme, 'class_name')}  {
-        color: map-get($scheme, 'color');
+        color: var(--index_0_text);
 
         &:hover{
-            background-color: map-get($scheme, 'hover');
+            background-color: map-get($scheme, 'background');
         }
     }
 }
@@ -40,8 +41,8 @@
 @each $scheme in $color_schemes {
 
     .outlined.#{map-get($scheme, 'class_name')}  {
-        color: map-get($scheme, 'color');
-        border: map-get($scheme, 'hover') 1px solid;
+        color: var(--index_0_text);
+        border: map-get($scheme, 'border') 1px solid;
 
         &:hover{
             background-color: map-get($scheme, 'hover');
