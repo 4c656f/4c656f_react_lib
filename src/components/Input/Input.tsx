@@ -1,20 +1,35 @@
-import React, {FC} from 'react';
+import React, {ComponentProps, ElementType, FC, InputHTMLAttributes} from 'react';
+import classes from './Input.module.scss'
+import {IColorIndex} from "../../types/IColorIndex";
 
-interface InputProps{
-    label: "string"| "some";
+type InputOwnProps = {
+    colorIndex?: IColorIndex;
+
 }
 
-const Input:FC<InputProps> = ({
-    label
+
+
+type ButtonProps= InputOwnProps & Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputOwnProps>
+
+const defaultClasses = [classes['container']]
+
+const Input:FC<ButtonProps> = ({
+                                    className,
+                                    colorIndex,
+                                    ...rest
                               }) => {
 
 
 
 
+
     return (
-        <div>
-            {label}
-        </div>
+        <input
+            className={`${defaultClasses.join(" ")} ${colorIndex?classes[`${colorIndex}_index`]:classes["0_index"]} ${className?className:""}`}
+            type={'text'}
+
+            {...rest}
+        />
     );
 };
 

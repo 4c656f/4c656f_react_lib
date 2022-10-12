@@ -96,7 +96,7 @@ $index_2_element :(
 );
 $index_action_element :(
         "class_name": "action_index",
-        "background" : var(--index_1_color),
+        "background" : var(--index_3_color),
         "border" : var(--index_3_color),
         "hover" : var(--index_3_color),
 );
@@ -116,10 +116,66 @@ $border_radius: 6px;
 
 /* Text Fonts */
 $font_family: 'BasierCircle', sans-serif;
-$font-weight-index1: 100;
-$font-weight-index2: 300;
-$font-weight-index3: 400;
 
+$font-weight-index1: 400;
+$font-weight-index2: 300;
+$font-weight-index3: 100;
+
+$font-size-h1: 20px;
+$font-size-h2: 18px;
+$font-size-h3: 16px;
+$font-size-h4: 14px;
+
+@mixin default_h1{
+  font-size: $font-size-h1;
+  font-weight: $font-weight-index1;
+}
+@mixin default_h2{
+  font-size: $font-size-h2;
+  font-weight: $font-weight-index1;
+}
+@mixin default_h3{
+  font-size: $font-size-h3;
+  font-weight: $font-weight-index1;
+}
+@mixin default_h4($size:$font-size-h4, $weight:$font-weight-index1){
+  font-size: $size;
+  font-weight: $weight;
+}
 
 /* Animation */
 $default_transition: 0.3s;
+
+/* Layouts */
+
+@mixin small_padding($top:7px, $right:13px, $bottom:7px, $left:13px){
+  padding: $top $right $bottom $left;
+}
+
+@mixin medium_padding($vertical:false, $horizontal:false, $top:7px, $right:13px, $bottom:7px, $left:13px){
+
+  @if($vertical){
+
+    padding: $vertical $right $vertical $left;
+
+  }
+  @else if($horizontal){
+
+    padding: $top $horizontal $bottom $horizontal;
+
+  }@else if($vertical and $horizontal){
+
+    padding: $vertical $horizontal $horizontal $horizontal;
+  }
+  @else{
+
+    padding: $top $right $bottom $left;
+
+  }
+
+
+}
+
+@mixin large_padding{
+
+}

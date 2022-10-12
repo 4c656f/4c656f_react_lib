@@ -1,5 +1,4 @@
 import React, {ComponentProps, ElementType, FC} from 'react';
-
 import classes from "./Button.module.scss"
 import {IColorIndex} from "../../types/IColorIndex";
 import {ButtonType} from "../../types/IElementType";
@@ -12,6 +11,8 @@ type ButtonCustomProps<E extends ElementType = ElementType> = {
     label: string,
     variant: ButtonType,
     colorIndex: IColorIndex,
+    isDisabled?: boolean,
+    isChecked?: boolean,
     as?: E
 }
 
@@ -32,6 +33,8 @@ const Button:FC<ButtonProps<ElementType>> = <E extends ElementType = typeof defa
         label,
         variant,
         colorIndex,
+        isChecked,
+        isDisabled,
         as,
         ...rest
     }:ButtonProps<E>
@@ -44,7 +47,10 @@ const Button:FC<ButtonProps<ElementType>> = <E extends ElementType = typeof defa
         <Element
             className={`${classes.container}
             ${classes[variant]}
-            ${classes[`${colorIndex}_index`]}`}
+            ${classes[`${colorIndex}_index`]}
+            ${isChecked?classes['checked']:""}
+            ${isDisabled?classes['disabled']:""}
+            `}
             {...rest}
         >
             {label}
