@@ -1,5 +1,5 @@
 const path = require('path');
-
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     mode: 'production',
@@ -13,6 +13,16 @@ module.exports = {
         },
         clean: true
     },
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'Readme.md'),
+                    to: path.resolve(__dirname, 'dist')
+                }
+            ],
+        }),
+    ],
     resolve: {
         extensions: ['.ts', '.tsx']
     },
@@ -41,7 +51,7 @@ module.exports = {
             },
             {
                 test: /\.svg$/,
-                use:[
+                use: [
 
                     {
                         loader: '@svgr/webpack', options: {
