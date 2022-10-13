@@ -40,6 +40,20 @@ module.exports = {
                 ]
             },
             {
+                test: /\.svg$/,
+                use:[
+
+                    {
+                        loader: '@svgr/webpack', options: {
+                            memo: true
+                        }
+                    },
+                    {
+                        loader: 'new-url-loader'
+                    }
+                ]
+            },
+            {
                 test: /\.module\.scss$/,
                 use: [
                     "style-loader",

@@ -3,7 +3,7 @@
 
 .container {
   position: relative;
-
+  width: max-content;
 }
 
 
@@ -13,7 +13,7 @@
 
 .toggle {
   all: unset;
-  position: absolute;
+  position: relative;
   left: 0%;
   top:0%;
   color: var(--index_0_text);
@@ -21,10 +21,18 @@
   transition: $default_transition;
   border-radius: $border_radius;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
 
   @include default_h4;
-  @include medium_padding($left: 10px);
+  @include medium_padding($left: 10px, $right: 30px);
 }
+
+.icon{
+  @include default_svg()
+}
+
 @each $scheme in $color_schemes {
 
   .toggle.#{map-get($scheme, 'class_name')} {
@@ -37,11 +45,28 @@
     }
   }
 }
+@keyframes appearance {
+  0%{
+    transform: translate(0, -10px);
+    opacity: 0;
+  }
+  100%{
+    transform: translate(0px);
+    opacity: 1;
+  }
+}
+
 .menu {
   all: unset;
+
+  height: 30px;
+  overflow: scroll;
+  width: 100%;
+  background-color: #ffffff;
   position: absolute;
   left: 0%;
   top: calc(0% + 50px);
   padding: 0;
-  display: none;
+  animation-name: appearance;
+  animation-duration: 0.2s;
 }

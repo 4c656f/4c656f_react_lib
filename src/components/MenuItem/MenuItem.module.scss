@@ -1,0 +1,18 @@
+@import "../../index.css";
+@import "../../variables";
+
+
+.container{
+  color: var(--index_0_text);
+  cursor: pointer;
+
+  @include default_h4
+}
+.chosen{
+  color: red !important;
+
+}
+
+.active{
+  pointer-events: none;
+}
