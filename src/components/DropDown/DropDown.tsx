@@ -3,7 +3,7 @@ import React, {
     cloneElement,
     FC,
     isValidElement,
-    ReactElement,
+    ReactElement, useCallback,
     useEffect,
     useMemo,
     useRef,
@@ -16,16 +16,18 @@ import {IColorIndex} from "../../types/IColorIndex";
 import MenuItem from "../MenuItem/MenuItem";
 
 type DropDownProps<TItem = any> = {
+    search?: boolean;
     colorIndex: IColorIndex;
     label: string;
     onChange?: (item: TItem)=>void;
-    children?: ReactElement<any, "div"> | ReactElement<any, "div">[];
+    children?: ReactElement<any, "div">[];
 }
 
 const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>) => {
 
 
     const {
+        search,
         colorIndex,
         label,
         onChange,
@@ -39,39 +41,68 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
 
     const [chosenIndex, setChosenIndex] = useState(-1)
 
+    const [menuAnimClass, setMenuAnimClass] = useState("")
+
+    const [searchValue, setSearchValue] = useState('')
 
     const elements = useRef<Record<number, HTMLDivElement>>({});
 
     const handleOpen = () => {
 
-        setIsOpen(prevState => !prevState)
+
+        if(isOpen){
+            setChosenIndex(-1)
+            setMenuAnimClass('hide')
+
+            setTimeout(()=>{
+                setIsOpen(prevState => !prevState)
+            },200)
+
+        }else{
+            setMenuAnimClass('')
+            setIsOpen(prevState => !prevState)
+        }
+
+
+
     }
 
     const items = useMemo(() => Children.toArray(children), [children]);
 
 
 
+
+
     const indexes = useMemo(()=>{
         return items.reduce<number[]>((acum, value, index)=>{
             if(isValidElement(value)){
+
                 if(value.type === MenuItem && !value.props.disabled){
-                    acum.push(index)
-                    return acum
+                    if(search?value.props.children.toLowerCase().includes(searchValue.toLowerCase()):true){
+                        console.log("indexes")
+                        acum.push(index)
+                        return acum
+                    }
+
                 }
             }
 
             return acum
         }, [])
-    }, [items])
+    }, [items, search?searchValue:null])
+
+
     
     const handleActive = (item:any) => {
-        if(onChange)onChange(item)
-        setIsOpen(false)
+        // if(onChange)onChange(item)
+        handleOpen()
+
         setActiveIndex(item)
+        console.log("keyDown", item)
     }
     
-    const handleKeyDown = (event: KeyboardEvent) => {
-        console.log("keyDown")
+    const handleKeyDown = useCallback((event: KeyboardEvent) => {
+
 
         switch (event.code) {
             case 'ArrowDown':
@@ -89,7 +120,7 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
                 event.preventDefault();
                 event.stopPropagation();
                 setChosenIndex(highlightedIndex => {
-                    const index = highlightedIndex === 0 ? indexes.length - 1 : highlightedIndex - 1;
+                    const index = highlightedIndex <= 0 ? indexes.length - 1 : highlightedIndex - 1;
                     elements.current[indexes[index]]?.scrollIntoView({
                         block: 'nearest',
                     });
@@ -101,21 +132,26 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
                 event.preventDefault();
                 event.stopPropagation();
                 const item = items[indexes[chosenIndex]];
+                console.log(indexes, chosenIndex, item)
                 if (chosenIndex !== -1 && isValidElement(item)) {
-                    handleActive(item.props.value);
+                    handleActive(indexes[chosenIndex]);
                 }
                 break;
             }
         }
-    }
+    },[chosenIndex, indexes])
+
+
+
 
 
     useEffect(() => {
         if (isOpen) document.addEventListener('keydown', handleKeyDown, true)
 
-
         return () => document.removeEventListener('keydown', handleKeyDown, true)
-    }, [isOpen])
+    }, [isOpen, handleKeyDown])
+
+
 
     return (
         <div
@@ -126,7 +162,7 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
                 className={`${classes.toggle} ${classes[`${colorIndex}_index`]}`}
                 onClick={handleOpen}
             >
-                {label}
+                {activeIndex>=0?children?children[activeIndex].props.children:label:label}
                 <ArrowIcon
                     style={{
                         transform: `rotate(${isOpen?180:0}deg)`
@@ -138,23 +174,31 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
 
             {isOpen ?
                 <menu
-                    className={classes.menu}
-
+                    className={`${classes.menu} ${menuAnimClass?classes[menuAnimClass]:""}`}
                 >
+                    {search?
+                        <input
+                            value={searchValue}
+                            onChange={(e)=>setSearchValue(e.target.value)}
+                        />:
+                        null
+                    }
                     {
                         Children.map(children, (child, index) => {
                             if (isValidElement(child)) {
+                                if(search?child.props.children.toLowerCase().includes(searchValue.toLowerCase()):true){
+                                    return cloneElement(child, {
+                                        active: activeIndex === index,
+                                        chosen: indexes[chosenIndex] === index,
+                                        onClick: (e:MouseEvent) => {
+                                            handleActive(index)
+                                        },
+                                        ref: (node: HTMLDivElement) => {
+                                            elements.current[index] = node;
+                                        }
+                                    })
+                                }
 
-                                return cloneElement(child, {
-                                    active: activeIndex === index,
-                                    chosen: indexes[chosenIndex] === index,
-                                    onClick: (e:MouseEvent) => {
-                                        handleActive(index)
-                                    },
-                                    ref: (node: HTMLDivElement) => {
-                                        elements.current[index] = node;
-                                    }
-                                })
                             }
                         })
                     }

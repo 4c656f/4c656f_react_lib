@@ -6,7 +6,7 @@ type MenuItemProps = {
     active?: boolean,
     chosen?: boolean,
     value: any,
-    className?: string[],
+    className?: string,
     onClick?: () => void
 }
 
@@ -26,8 +26,9 @@ const MenuItem = forwardRef<HTMLDivElement, PropsWithChildren<MenuItemProps>>((p
     const defaultClasses =
         [   classes.container,
             active ? classes.active : "",
+            disabled ? classes.disabled : "",
             chosen ? classes.chosen : "",
-            className ? [...className] : ""]
+            className ? className : ""]
 
     return (
         <div

@@ -12,11 +12,15 @@ export default {
 } as ComponentMeta<typeof DropDown>;
 
 const items = [
-    { label: 'Moscow', value: 1 },
-    { label: 'London', value: 2 },
-    { label: 'Helsinki', value: 3 },
-    { label: 'Rome', value: 4 },
-    { label: 'Oslo', value: 5 },
+    { label: 'Value 1', value: 1 },
+    { label: 'Value 2', value: 2 },
+    { label: 'Value 3', value: 3 },
+    { label: 'Value 4', value: 4 },
+    { label: 'Value 5', value: 5 },
+    { label: 'Value 6', value: 6 },
+    { label: 'Value 7', value: 7 },
+    { label: 'Value 8', value: 8 },
+    { label: 'Value 9', value: 9 },
 ];
 
 
@@ -47,6 +51,7 @@ const Template: ComponentStory<typeof DropDown> = (args) => {
 export const Default = Template.bind({});
 
 Default.args = {
+    search: true,
     colorIndex: "0",
     label: "someLabel"
 }

@@ -5,14 +5,26 @@
 .container{
   color: var(--index_0_text);
   cursor: pointer;
+  width: 100%;
 
-  @include default_h4
-}
-.chosen{
-  color: red !important;
+  @include small_padding;
+  @include default_h4;
 
-}
+  border-radius: $border_radius;
+  transition: $default_transition;
+  &:hover{
+    background-color: var(--index_2_color);
+  }
+  &.disabled{
+    color: var(--index_1_text);
+    pointer-events: none;
+  }
+  &.chosen{
+    background-color: var(--index_2_color);
+  }
 
-.active{
-  pointer-events: none;
+  &.active{
+    background-color: var(--index_2_color);
+    pointer-events: none;
+  }
 }

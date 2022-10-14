@@ -218,3 +218,37 @@ $default_transition: 0.3s;
     stroke: var(--index_0_text);
   }
 }
+
+
+@mixin styling_scrollbar(){
+  /* width */
+  &::-webkit-scrollbar {
+    width: 8px;
+
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: none;
+
+
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    border: 2.5px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+
+    background-color: var(--index_2_color);
+
+
+    border-radius: 9999px;
+
+
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+}
