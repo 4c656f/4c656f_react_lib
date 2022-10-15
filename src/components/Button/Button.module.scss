@@ -7,9 +7,12 @@
   font-family: $font_family;
   border-radius: $border_radius;
   cursor: pointer;
-
+  position: relative;
   transition: $default_transition;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 5px;
   @include default_h4;
   @include small_padding;
 }
@@ -77,8 +80,13 @@
 }
 
 .disabled {
-  color: var(--index_1_text) !important;
+  color: var(--index_2_text) !important;
   pointer-events: none !important;
   cursor: default !important;
 }
 
+.icon{
+
+
+  @include default_svg()
+}

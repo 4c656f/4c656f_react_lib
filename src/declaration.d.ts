@@ -8,3 +8,8 @@ declare module "*.svg" {
 
     export { ReactComponent };
 }
+declare module '*.svg?inline' {
+    const ReactComponent: SvgrComponent;
+
+    export { ReactComponent };
+}

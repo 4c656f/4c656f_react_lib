@@ -4,7 +4,7 @@ import {IColorIndex} from "../../types/IColorIndex";
 
 type InputOwnProps = {
     colorIndex?: IColorIndex;
-
+    Icon?: SvgrComponent;
 }
 
 
@@ -12,20 +12,33 @@ type ButtonProps = InputOwnProps & Omit<InputHTMLAttributes<HTMLInputElement>, k
 
 const defaultClasses = [classes['container']]
 
-const Input: FC<ButtonProps> = ({
-                                    className,
-                                    colorIndex,
-                                    ...rest
-                                }) => {
+const Input: FC<ButtonProps> = (props) => {
 
+    const {
+        Icon,
+        className,
+        colorIndex,
+        ...rest
+    } = props
 
     return (
-        <input
-            className={`${defaultClasses.join(" ")} ${colorIndex ? classes[`${colorIndex}_index`] : classes["0_index"]} ${className ? className : ""}`}
-            type={'text'}
 
-            {...rest}
-        />
+        <div className={classes.main_container}>
+            <input
+                className={`${defaultClasses.join(" ")} ${colorIndex ? classes[`${colorIndex}_index`] : classes["0_index"]} ${className ? className : ""}`}
+                type={'text'}
+
+                {...rest}
+            />
+            {Icon ?
+                <Icon
+                    className={classes.icon}
+                />
+                :
+                null
+            }
+        </div>
+
     );
 };
 

@@ -22,7 +22,10 @@
   border-radius: $border_radius;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  grid-gap: 5px;
+  align-content: center;
+  flex-wrap: wrap;
   width: 200px;
 
   @include default_h4;
@@ -30,7 +33,9 @@
 }
 
 .icon{
-  @include default_svg()
+
+  @include default_svg_layout;
+  @include default_svg();
 }
 
 @each $scheme in $color_schemes {
@@ -79,7 +84,7 @@
   background-color: var(--index_1_color);
   position: absolute;
   left: 0%;
-  top: calc(0% + 55px);
+  top: calc(100% + 10px);
   padding: 0;
   animation-name: appearance;
   animation-duration: 0.2s;
@@ -104,3 +109,35 @@
 
 }
 
+.search_container{
+  position: relative;
+  width: 100%;
+  padding-left: 13px;
+  margin-bottom: 5px;
+}
+
+
+.search_input{
+  all: unset;
+  height: 40px;
+  width: calc(100% - 25px);
+  color: var(--index_0_text);
+
+  @include default_h4();
+
+  &::placeholder{
+    color: var(--index_1_text);
+
+    @include default_h4();
+  }
+
+}
+.search_icon{
+  position: absolute;
+  transform: translate(0, -50%);
+  top: 50%;
+  right: 0%;
+  margin-right: 10px;
+
+  @include default_svg();
+}

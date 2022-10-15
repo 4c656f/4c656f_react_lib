@@ -21,6 +21,7 @@ const items = [
     { label: 'Value 7', value: 7 },
     { label: 'Value 8', value: 8 },
     { label: 'Value 9', value: 9 },
+    { label: 'Value 10', value: 10 },
 ];
 
 
@@ -55,6 +56,13 @@ Default.args = {
     colorIndex: "0",
     label: "someLabel"
 }
+export const Multiselect = Template.bind({});
 
+Multiselect.args = {
+    search: true,
+    colorIndex: "0",
+    label: "someLabel",
+    multiselect: true
+}
 
 

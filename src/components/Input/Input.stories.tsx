@@ -1,7 +1,7 @@
 import React from "react";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
 import Input from "./Input";
-
+import {SearchIcon} from "../../materials/icons";
 
 export default {
     title: "4c656f_lib/Input",
@@ -14,8 +14,8 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     placeholder: 'Placeholder',
-    style: {width: "200px"}
-
+    style: {width: "300px"},
+    Icon: SearchIcon
 };
 
 

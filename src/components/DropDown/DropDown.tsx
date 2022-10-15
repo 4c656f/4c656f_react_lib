@@ -3,7 +3,8 @@ import React, {
     cloneElement,
     FC,
     isValidElement,
-    ReactElement, useCallback,
+    ReactElement,
+    useCallback,
     useEffect,
     useMemo,
     useRef,
@@ -14,16 +15,19 @@ import {ReactComponent as ArrowIcon} from "../../materials/icons/ArrowSmall.svg"
 import classes from "./DropDown.module.scss"
 import {IColorIndex} from "../../types/IColorIndex";
 import MenuItem from "../MenuItem/MenuItem";
+import {SearchIcon} from "../../materials/icons";
+import DropDownMultiTag from "../DropdownMultiTag/DropDownMultiTag";
 
-type DropDownProps<TItem = any> = {
+type DropDownProps = {
     search?: boolean;
     colorIndex: IColorIndex;
     label: string;
-    onChange?: (item: TItem)=>void;
+    onChange?: (index:number) => void;
     children?: ReactElement<any, "div">[];
+    multiselect?: boolean;
 }
 
-const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>) => {
+const DropDown: FC<DropDownProps> = (props: DropDownProps) => {
 
 
     const {
@@ -31,6 +35,7 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
         colorIndex,
         label,
         onChange,
+        multiselect,
         children
     } = props
 
@@ -45,24 +50,25 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
 
     const [searchValue, setSearchValue] = useState('')
 
+    const [multiselectIndexes, setMultiselectIndexes] = useState<{ [key: number]: number }>({})
+
     const elements = useRef<Record<number, HTMLDivElement>>({});
 
     const handleOpen = () => {
 
 
-        if(isOpen){
+        if (isOpen) {
             setChosenIndex(-1)
             setMenuAnimClass('hide')
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 setIsOpen(prevState => !prevState)
-            },200)
+            }, 200)
 
-        }else{
+        } else {
             setMenuAnimClass('')
             setIsOpen(prevState => !prevState)
         }
-
 
 
     }
@@ -70,16 +76,13 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
     const items = useMemo(() => Children.toArray(children), [children]);
 
 
+    const indexes = useMemo(() => {
+        return items.reduce<number[]>((acum, value, index) => {
+            if (isValidElement(value)) {
 
+                if (value.type === MenuItem && !value.props.disabled) {
+                    if (search ? value.props.children.toLowerCase().includes(searchValue.toLowerCase()) : true) {
 
-
-    const indexes = useMemo(()=>{
-        return items.reduce<number[]>((acum, value, index)=>{
-            if(isValidElement(value)){
-
-                if(value.type === MenuItem && !value.props.disabled){
-                    if(search?value.props.children.toLowerCase().includes(searchValue.toLowerCase()):true){
-                        console.log("indexes")
                         acum.push(index)
                         return acum
                     }
@@ -89,18 +92,41 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
 
             return acum
         }, [])
-    }, [items, search?searchValue:null])
+    }, [items, search ? searchValue : null])
 
 
-    
-    const handleActive = (item:any) => {
-        // if(onChange)onChange(item)
+    const handleActive = (item: any) => {
+        if(onChange)onChange(item)
+
+
         handleOpen()
 
-        setActiveIndex(item)
-        console.log("keyDown", item)
+
+        if (multiselect) {
+            console.log(multiselectIndexes, item, item in multiselectIndexes)
+            setMultiselectIndexes(prevState => {
+                console.log(prevState)
+                if (item in prevState) {
+                    delete prevState[item]
+                    return prevState
+                }
+                prevState[item] = item
+                return prevState
+            })
+        }else{
+            if (item === activeIndex) {
+                setActiveIndex(-1)
+                return
+            }
+            setActiveIndex(item)
+
+        }
+
+
+
+
     }
-    
+
     const handleKeyDown = useCallback((event: KeyboardEvent) => {
 
 
@@ -128,21 +154,20 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
                 });
                 break;
             }
-            case 'Enter':{
+            case 'Enter': {
                 event.preventDefault();
                 event.stopPropagation();
                 const item = items[indexes[chosenIndex]];
-                console.log(indexes, chosenIndex, item)
+
                 if (chosenIndex !== -1 && isValidElement(item)) {
                     handleActive(indexes[chosenIndex]);
                 }
+
+
                 break;
             }
         }
-    },[chosenIndex, indexes])
-
-
-
+    }, [chosenIndex, indexes])
 
 
     useEffect(() => {
@@ -151,6 +176,13 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
         return () => document.removeEventListener('keydown', handleKeyDown, true)
     }, [isOpen, handleKeyDown])
 
+    const onTagClick = (index: number) => {
+        setMultiselectIndexes(prevState => {
+
+            delete prevState[index]
+            return {...prevState}
+        })
+    }
 
 
     return (
@@ -162,10 +194,27 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
                 className={`${classes.toggle} ${classes[`${colorIndex}_index`]}`}
                 onClick={handleOpen}
             >
-                {activeIndex>=0?children?children[activeIndex].props.children:label:label}
+                {
+                    multiselect ?
+
+                        Object.keys(multiselectIndexes).length>0?
+                        Object.keys(multiselectIndexes).map((value, index) => {
+
+
+                            return (
+                                <DropDownMultiTag
+                                    index={Number(value)}
+                                    value={children && children[Number(value)].props.children}
+                                    onClick={onTagClick}
+                                />
+                            )
+                        }):label
+                        : activeIndex >= 0 ? children ? children[activeIndex].props.children : label : label
+
+                }
                 <ArrowIcon
                     style={{
-                        transform: `rotate(${isOpen?180:0}deg)`
+                        transform: `translate(0, -50%) rotate(${isOpen ? 180 : 0}deg)`
                     }}
                     className={classes.icon}
 
@@ -174,23 +223,32 @@ const DropDown: FC<DropDownProps> = <T extends unknown>(props: DropDownProps<T>)
 
             {isOpen ?
                 <menu
-                    className={`${classes.menu} ${menuAnimClass?classes[menuAnimClass]:""}`}
+                    className={`${classes.menu} ${menuAnimClass ? classes[menuAnimClass] : ""}`}
                 >
-                    {search?
-                        <input
-                            value={searchValue}
-                            onChange={(e)=>setSearchValue(e.target.value)}
-                        />:
+                    {search ?
+                        <div
+                            className={classes.search_container}
+                        >
+                            <input
+                                className={classes.search_input}
+                                placeholder={"Search"}
+                                value={searchValue}
+                                onChange={(e) => setSearchValue(e.target.value)}
+                            />
+                            <SearchIcon
+                                className={classes.search_icon}
+                            />
+                        </div> :
                         null
                     }
                     {
                         Children.map(children, (child, index) => {
                             if (isValidElement(child)) {
-                                if(search?child.props.children.toLowerCase().includes(searchValue.toLowerCase()):true){
+                                if (search ? child.props.children.toLowerCase().includes(searchValue.toLowerCase()) : true) {
                                     return cloneElement(child, {
-                                        active: activeIndex === index,
+                                        active: multiselect ? index in multiselectIndexes : activeIndex === index,
                                         chosen: indexes[chosenIndex] === index,
-                                        onClick: (e:MouseEvent) => {
+                                        onClick: (e: MouseEvent) => {
                                             handleActive(index)
                                         },
                                         ref: (node: HTMLDivElement) => {

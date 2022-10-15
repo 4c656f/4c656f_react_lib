@@ -9,7 +9,7 @@ body {
 
   --index_2_color: #1B1B1B;
 
-  --index_2_5_color: #363636;
+  --index_2_5_color: #1e1e1e;
 
   --index_3_color: #383838;
 
@@ -18,6 +18,8 @@ body {
   --index_0_text: #D2D2D2;
 
   --index_1_text: #9E9E9E;
+
+  --index_2_text: #5C5D66;
 
 }
 
@@ -30,7 +32,7 @@ body[data-theme='light'] {
 
   --index_2_color: #F7F7F7;
 
-  --index_2_5_color: #F7F7F7;
+  --index_2_5_color: #f3f3f3;
 
   --index_3_color: #EDEFF2;
 
@@ -40,6 +42,7 @@ body[data-theme='light'] {
 
   --index_1_text: #5E6265;
 
+  --index_2_text: #5C5D66;
 
 }
 
@@ -53,7 +56,7 @@ body[data-theme='dark'] {
 
   --index_2_color: #1B1B1B;
 
-  --index_2_5_color: #363636;
+  --index_2_5_color: #1e1e1e;
 
   --index_3_color: #383838;
 
@@ -62,6 +65,8 @@ body[data-theme='dark'] {
   --index_0_text: #D2D2D2;
 
   --index_1_text: #9E9E9E;
+
+  --index_2_text: #5C5D66;
 }
 
 
@@ -218,6 +223,12 @@ $default_transition: 0.3s;
     stroke: var(--index_0_text);
   }
 }
+@mixin default_svg_layout() {
+  position: absolute;
+  right: calc(0% + 24px);
+  transform: translate(0%, -50%);
+  top: 50%;
+}
 
 
 @mixin styling_scrollbar(){
@@ -236,10 +247,12 @@ $default_transition: 0.3s;
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
+
     border: 2.5px solid rgba(0, 0, 0, 0);
     background-clip: padding-box;
 
     background-color: var(--index_2_color);
+
 
 
     border-radius: 9999px;
@@ -252,3 +265,4 @@ $default_transition: 0.3s;
   }
 
 }
+

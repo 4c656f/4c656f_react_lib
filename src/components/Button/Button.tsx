@@ -13,6 +13,7 @@ type ButtonCustomProps<E extends ElementType = ElementType> = {
     colorIndex: IColorIndex,
     isDisabled?: boolean,
     isChecked?: boolean,
+    Icon?: SvgrComponent,
     as?: E
 }
 
@@ -32,6 +33,7 @@ const Button: FC<ButtonProps<ElementType>> = <E extends ElementType = typeof def
         isChecked,
         isDisabled,
         as,
+        Icon,
         ...rest
     }: ButtonProps<E>
 ) => {
@@ -50,6 +52,12 @@ const Button: FC<ButtonProps<ElementType>> = <E extends ElementType = typeof def
             {...rest}
         >
             {label}
+            {Icon ?
+                <Icon
+                    className={classes.icon}
+                />
+                :
+                null}
         </Element>
     );
 };

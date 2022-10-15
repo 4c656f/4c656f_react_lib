@@ -1,6 +1,7 @@
 import React from "react";
 import {ComponentMeta, ComponentStory} from "@storybook/react";
 import Button from "./Button";
+import {ArrowIcon} from "../../materials/icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -30,5 +31,15 @@ Outlined.args = {
     label: "Button",
     variant: "outlined",
     colorIndex: "0"
+};
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+    style: {width: '100px'},
+    label: "Button",
+    variant: "contained",
+    colorIndex: "0",
+    Icon: ArrowIcon,
+
 };
 

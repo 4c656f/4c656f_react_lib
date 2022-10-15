@@ -1,6 +1,12 @@
 const path = require('path');
 const CopyPlugin = require("copy-webpack-plugin");
 
+
+
+
+
+
+
 module.exports = {
     mode: 'production',
     entry: './src/index.ts',
@@ -86,7 +92,7 @@ module.exports = {
             {
                 test: /\.(ts|tsx)?$/,
                 use: ['ts-loader'],
-                exclude: /node_modules/
+                exclude: /\.stories\.tsx$/
             },
             {
                 test: /\.(ttf|woff|woff2|eot)$/,
