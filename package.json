@@ -8,7 +8,11 @@
     "build-storybook": "build-storybook -c .storybook",
     "pub": "webpack && npm version patch && npm publish"
   },
-  "author": "",
+  "author": "4c656f",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4c656f/4c656f_react_lib"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.19.3",

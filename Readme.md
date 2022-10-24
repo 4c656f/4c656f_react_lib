@@ -1,4 +1,7 @@
-source ```https://github.com/4c656f/4c656f_react_lib```
+install
+```console
+npm i 4c656f_react_ui_kit
+```
 
 run storybook 
 ```console
