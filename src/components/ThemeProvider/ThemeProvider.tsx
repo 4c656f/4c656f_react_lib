@@ -20,6 +20,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
     }
 
     useEffect(() => {
+        console.log('contextProvider')
         document.body.dataset.theme = isDark ? 'dark' : 'light'
     }, [isDark])
 
