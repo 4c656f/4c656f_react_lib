@@ -34,21 +34,26 @@ const Button: FC<ButtonProps<ElementType>> = <E extends ElementType = typeof def
         isDisabled,
         as,
         Icon,
+        className,
         ...rest
     }: ButtonProps<E>
 ) => {
 
     const Element = as || defaultElement;
 
+    const classNames = [
+        classes.container,
+        `${classes[variant]}`,
+        `${classes[`${colorIndex}_index`]}`,
+        `${isChecked ? classes['checked'] : ""}`,
+        `${isDisabled ? classes['disabled'] : ""}`,
+        `${className ? className : ""}`
+
+    ]
 
     return (
         <Element
-            className={`${classes.container}
-            ${classes[variant]}
-            ${classes[`${colorIndex}_index`]}
-            ${isChecked ? classes['checked'] : ""}
-            ${isDisabled ? classes['disabled'] : ""}
-            `}
+            className={classNames.join(' ')}
             {...rest}
         >
             {label}

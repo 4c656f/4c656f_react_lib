@@ -1,0 +1,13 @@
+@import '../../variables';
+
+.container{
+  width: 100%;
+  background-color: var(--index_1_color);
+
+  border-radius: $border_radius;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+
+  @include small_padding($horizontal: 0px)
+}

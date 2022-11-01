@@ -1,0 +1,19 @@
+.container{
+  all: unset;
+  position: relative;
+}
+.button{
+
+  &:hover ~ .section{
+    display: block;
+  }
+}
+
+.section{
+  position: absolute;
+  display: none;
+
+  &:hover{
+    display: block;
+  }
+}
