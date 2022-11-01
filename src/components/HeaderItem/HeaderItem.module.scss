@@ -1,6 +1,5 @@
 .container{
   all: unset;
-  position: relative;
 }
 .button{
 
@@ -12,6 +11,11 @@
 .section{
   position: absolute;
   display: none;
+  transform: translate(-50%, 0);
+  left: 50%;
+
+
+
 
   &:hover{
     display: block;

@@ -8,6 +8,13 @@
   margin: 10px;
   display: flex;
   flex-direction: row;
-
-  @include small_padding($horizontal: 0px)
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  @include small_padding($horizontal: 30px)
+}
+.sections{
+  display: flex;
+  flex-direction: row;
+  grid-gap: 10px;
 }

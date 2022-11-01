@@ -1,3 +1,18 @@
+@import '../../variables';
 .container{
+  background-color: var(--index_1_color) !important;
+  width: max-content;
+  height: max-content;
+  border-radius: $border_radius;
+  @include small_padding()
+
+}
+.main_title{
+
+}
+.section_title{
+
+}
+.section_element{
 
 }

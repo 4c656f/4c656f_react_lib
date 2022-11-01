@@ -1,12 +1,25 @@
-import React, {Children, cloneElement, ElementType, FC, isValidElement, ReactElement} from 'react';
+import React, {
+    Children,
+    cloneElement,
+    ComponentProps,
+    ElementType,
+    FC,
+    isValidElement,
+    PropsWithChildren,
+    ReactElement
+} from 'react';
 import HeaderItem from '../HeaderItem/HeaderItem';
 import classes from './Header.module.scss'
+
+type props = {
+    children: ReactElement[]
+} & PropsWithChildren
 
 type HeaderProps = {
     children?: [
         ReactElement<any, any>,
-        ReactElement<any, any>[],
-        ReactElement<any, any>[]
+        ReactElement<props, any>,
+        ReactElement<props, any>,
     ]
 }
 
@@ -21,18 +34,38 @@ const Header:FC<HeaderProps> = (props:HeaderProps) => {
         <header
             className={classes.container}
         >
-            <section>
-                {children}
+            <section
+                className={classes.sections}
+            >
+                {children?.[0]}
             </section>
-            <section>
-                {children?.[1].map((value, index) => {
-                    return (value)
-                })}
+            <section
+                className={classes.sections}
+            >
+                {(()=>{
+                    if(isValidElement(children?.[1])){
+                        return children?.[1].props.children.map((value, index) => {
+                            return value
+                        })
+
+                    }else{
+                        return null
+                    }
+                })()}
             </section>
-            <section>
-                {children?.[2].map((value, index) => {
-                    return(value)
-                })}
+            <section
+                className={classes.sections}
+            >
+                {(()=>{
+                    if(isValidElement(children?.[2])){
+                        return children?.[2].props.children.map((value, index) => {
+                            return value
+                        })
+
+                    }else{
+                        return null
+                    }
+                })()}
             </section>
             
         </header>
