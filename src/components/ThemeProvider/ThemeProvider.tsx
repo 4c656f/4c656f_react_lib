@@ -12,6 +12,7 @@ export const ThemeContext = createContext({
 })
 
 const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
+
     const [isDark, setIsDark] = useState(false)
 
 
@@ -20,12 +21,12 @@ const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
     }
 
     useEffect(() => {
-        console.log('contextProvider')
-        document.body.dataset.theme = isDark ? 'dark' : 'light'
+        console.log('mount')
+        // document.body.dataset.theme = isDark ? 'dark' : 'light'
     }, [isDark])
 
     return (
-        <ThemeContext.Provider value={{isDark, toggleTheme}}>
+        <ThemeContext.Provider value={{isDark: true, toggleTheme: ()=>console.log('toggle')}}>
             {children}
         </ThemeContext.Provider>
     );

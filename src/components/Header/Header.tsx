@@ -6,7 +6,7 @@ import React, {
     FC,
     isValidElement,
     PropsWithChildren,
-    ReactElement
+    ReactElement, useEffect
 } from 'react';
 import HeaderItem from '../HeaderItem/HeaderItem';
 import classes from './Header.module.scss'
@@ -16,20 +16,20 @@ type props = {
 } & PropsWithChildren
 
 type HeaderProps = {
-    children?: [
-        ReactElement<any, any>,
-        ReactElement<props, any>,
-        ReactElement<props, any>,
-    ]
+    logoSection?: ReactElement<any, any>,
+    mainSection?: ReactElement<any, any>[],
+    rightSection?: ReactElement<any, any>[],
 }
 
 const Header:FC<HeaderProps> = (props:HeaderProps) => {
 
     const {
-        children
+        logoSection,
+        mainSection,
+        rightSection,
     } = props
 
-    
+
     return (
         <header
             className={classes.container}
@@ -37,35 +37,19 @@ const Header:FC<HeaderProps> = (props:HeaderProps) => {
             <section
                 className={classes.sections}
             >
-                {children?.[0]}
+                {logoSection}
             </section>
             <section
                 className={classes.sections}
             >
-                {(()=>{
-                    if(isValidElement(children?.[1])){
-                        return children?.[1].props.children.map((value, index) => {
-                            return value
-                        })
-
-                    }else{
-                        return null
-                    }
-                })()}
+                {
+                    mainSection
+                }
             </section>
             <section
                 className={classes.sections}
             >
-                {(()=>{
-                    if(isValidElement(children?.[2])){
-                        return children?.[2].props.children.map((value, index) => {
-                            return value
-                        })
-
-                    }else{
-                        return null
-                    }
-                })()}
+                {logoSection}
             </section>
             
         </header>
