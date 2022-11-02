@@ -3,7 +3,7 @@ import React, {
     cloneElement,
     FC,
     isValidElement,
-    ReactElement,
+    ReactElement, ReactNode,
     useCallback,
     useEffect,
     useMemo,
@@ -17,11 +17,13 @@ import {IColorIndex} from "../../types/IColorIndex";
 import MenuItem from "../MenuItem/MenuItem";
 import {SearchIcon} from "../../materials/icons";
 import DropDownMultiTag from "../DropdownMultiTag/DropDownMultiTag";
+import {IElementsSize} from "../../types/IElementsSize";
 
 type DropDownProps = {
     search?: boolean;
-    colorIndex: IColorIndex;
-    label: string;
+    colorIndex?: IColorIndex;
+    label?: ReactNode;
+    size?: IElementsSize;
     onChange?: (index:number) => void;
     children?: ReactElement<any, "div">[];
     multiselect?: boolean;
@@ -32,7 +34,8 @@ const DropDown: FC<DropDownProps> = (props: DropDownProps) => {
 
     const {
         search,
-        colorIndex,
+        colorIndex = "0",
+        size = "medium",
         label,
         onChange,
         multiselect,
@@ -191,7 +194,7 @@ const DropDown: FC<DropDownProps> = (props: DropDownProps) => {
         >
 
             <button
-                className={`${classes.toggle} ${classes[`${colorIndex}_index`]}`}
+                className={`${classes.toggle} ${classes[size]} ${classes[`${colorIndex}_index`]}`}
                 onClick={handleOpen}
             >
                 {

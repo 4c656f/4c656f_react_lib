@@ -39,6 +39,8 @@ $border_radius: 6px;
 /* Text Fonts */
 $font_family: 'BasierCircle', sans-serif;
 
+$font-weight-index0_2: 800;
+$font-weight-index0_5: 600;
 $font-weight-index1: 400;
 $font-weight-index2: 300;
 $font-weight-index3: 100;
@@ -48,27 +50,31 @@ $font-size-h2: 18px;
 $font-size-h3: 16px;
 $font-size-h4: 14px;
 
-@mixin default_h1 {
+@mixin default_h1($size:$font-size-h1, $weight:$font-weight-index0_2) {
   font-family: $font_family;
-  font-size: $font-size-h1;
-  font-weight: $font-weight-index1;
+  color: var(--index_0_text);
+  font-size: $size;
+  font-weight: $weight;
 }
 
-@mixin default_h2 {
+@mixin default_h2($size:$font-size-h2, $weight:$font-weight-index0_5) {
   font-family: $font_family;
-  font-size: $font-size-h2;
-  font-weight: $font-weight-index1;
+  color: var(--index_0_text);
+  font-size: $size;
+  font-weight: $weight;
 }
 
-@mixin default_h3 {
+@mixin default_h3($size:$font-size-h3, $weight:$font-weight-index0_5) {
   font-family: $font_family;
-  font-size: $font-size-h3;
-  font-weight: $font-weight-index1;
+  font-size: $size;
+  color: var(--index_0_text);
+  font-weight: $weight;
 }
 
 @mixin default_h4($size:$font-size-h4, $weight:$font-weight-index1) {
   font-family: $font_family;
   font-size: $size;
+  color: var(--index_0_text);
   font-weight: $weight;
 }
 
@@ -99,7 +105,7 @@ $default_transition: 0.3s;
 
 }
 
-@mixin medium_padding($vertical:false, $horizontal:false, $top:15px, $right:13px, $bottom:15px, $left:13px) {
+@mixin medium_padding($vertical:false, $horizontal:false, $top:10px, $right:16px, $bottom:10px, $left:16px) {
 
   @if ($vertical) {
 
@@ -121,7 +127,7 @@ $default_transition: 0.3s;
 
 }
 
-@mixin large_padding($vertical:false, $horizontal:false, $top:7px, $right:13px, $bottom:7px, $left:13px) {
+@mixin large_padding($vertical:false, $horizontal:false, $top:14px, $right:17px, $bottom:14px, $left:17px) {
 
   @if ($vertical) {
 
@@ -142,7 +148,6 @@ $default_transition: 0.3s;
 
 
 }
-
 
 @mixin default_svg($size:14px) {
   height: $size;
@@ -196,3 +201,26 @@ $default_transition: 0.3s;
 
 }
 
+h1{
+  all: unset;
+  @include default_h1()
+}
+h2{
+  all: unset;
+  @include default_h2()
+}
+h3{
+  all: unset;
+  @include default_h3()
+}
+h4{
+  all: unset;
+  @include default_h4()
+}
+span{
+  all: unset;
+
+
+  @include default_h4();
+  color: var(--index_1_text);
+}

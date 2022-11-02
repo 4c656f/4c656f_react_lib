@@ -1,6 +1,17 @@
 import React, {FC, ReactElement} from 'react';
 import classes from './HeaderSection.module.scss'
 
+
+
+export type headerSectionHelper = {
+    title?: string;
+    [key: string|number]: any;
+    elements?: {
+        label?: string;
+        [key: string|number]: any;
+    }[]
+}
+
 type headerSectionElems = {
     title?: ReactElement<any, any>;
     elements?: ReactElement<any, any> | ReactElement<any, any>[]
@@ -26,25 +37,29 @@ const HeaderSection: FC<HeaderSectionProps> =
             <menu
                 className={classes.container}
             >
-
                 <div
-                    className={classes.section_title_elements}
+                    className={classes.main_title}
                 >
                     {sectionTitle}
+                </div>
 
-                    <div
-                        className={classes.section_element}
-                    >
-
-                        {headerSectionElems?.map(value => {
-                            return (
-                                <>
-                                    {value.title}
+                <div
+                    className={classes.elements_container}
+                >
+                    {headerSectionElems?.map(value => {
+                        return (
+                            <div
+                                className={classes.section_element}
+                            >
+                                {value.title}
+                                <div
+                                    className={classes.elements_button}
+                                >
                                     {value.elements}
-                                </>
-                            )
-                        })}
-                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </menu>
         );

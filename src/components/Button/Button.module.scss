@@ -13,8 +13,8 @@
   align-items: center;
   justify-content: space-between;
   grid-gap: 5px;
+  box-sizing: border-box;
   @include default_h4;
-  @include small_padding;
 }
 @keyframes icon_appearance {
   0%{
@@ -26,7 +26,15 @@
     transform: translate(0, 0);
   }
 }
-
+.small{
+  @include small_padding;
+}
+.medium{
+  @include medium_padding;
+}
+.large{
+  @include large_padding;
+}
 @each $scheme in $color_schemes {
 
   .text.#{map-get($scheme, 'class_name')} {
@@ -94,7 +102,7 @@
     }
 
   }
-  .primary.#{map-get($scheme, 'class_name')} {
+  .link.#{map-get($scheme, 'class_name')} {
 
     color: var(--index_0_text);
 

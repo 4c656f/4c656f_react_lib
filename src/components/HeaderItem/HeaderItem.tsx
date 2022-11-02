@@ -28,6 +28,7 @@ const HeaderItem: FC<HeaderItemProps> = (props: HeaderItemProps) => {
                 className={classes.button}
                 children={title}
                 variant={'text'}
+                size={'medium'}
                 colorIndex={'0'}
             />
 

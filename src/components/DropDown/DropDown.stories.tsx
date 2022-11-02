@@ -54,7 +54,8 @@ export const Default = Template.bind({});
 Default.args = {
     search: true,
     colorIndex: "0",
-    label: "someLabel"
+    label: "someLabel",
+    size: "medium"
 }
 export const Multiselect = Template.bind({});
 
@@ -62,7 +63,8 @@ Multiselect.args = {
     search: true,
     colorIndex: "0",
     label: "someLabel",
-    multiselect: true
+    multiselect: true,
+    size: "medium"
 }
 
 

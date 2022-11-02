@@ -28,9 +28,17 @@
   width: 200px;
 
   @include default_h4;
-  @include medium_padding($left: 10px, $right: 30px);
+  //@include medium_padding($left: 10px, $right: 30px);
 }
-
+.small{
+  @include small_padding;
+}
+.medium{
+  @include medium_padding;
+}
+.large{
+  @include large_padding;
+}
 .icon{
 
   @include default_svg_layout;

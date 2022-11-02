@@ -16,6 +16,7 @@ export const Text = Template.bind({});
 Text.args = {
     children: "Button",
     variant: "text",
+    size: "medium",
     colorIndex: "0"
 };
 
@@ -23,6 +24,7 @@ export const Contained = Template.bind({});
 Contained.args = {
     children: "Button",
     variant: "contained",
+    size: "medium",
     colorIndex: "0"
 };
 
@@ -30,7 +32,9 @@ export const Outlined = Template.bind({});
 Outlined.args = {
     children: "Button",
     variant: "outlined",
+    size: "medium",
     colorIndex: "0"
+
 };
 
 export const WithIcon = Template.bind({});
@@ -40,15 +44,19 @@ WithIcon.args = {
     variant: "contained",
     colorIndex: "0",
     icon: <ArrowIcon/>,
+    size: "medium",
     defaultIconStyles: true
 
 };
 
-export const WithIconPrimary = Template.bind({});
-WithIconPrimary.args = {
+export const WithIconLink = Template.bind({});
+WithIconLink.args = {
     style: {width: '100px'},
     children: "Button",
-    variant: "primary",
+    variant: "link",
+    as: "a",
+    size: "medium",
+    href: "#",
     colorIndex: "0",
     icon: <ArrowIcon/>,
     defaultIconStyles: true
