@@ -1,4 +1,4 @@
-import React, {ComponentProps, ElementType, FC} from 'react';
+import React, {cloneElement, ComponentProps, ElementType, FC, ReactElement, ReactNode} from 'react';
 import classes from "./Button.module.scss"
 import {IColorIndex} from "../../types/IColorIndex";
 import {ButtonType} from "../../types/IElementType";
@@ -8,12 +8,13 @@ type customElementsPick = JSX.IntrinsicElements['button' | 'a'];
 
 
 type ButtonCustomProps<E extends ElementType = ElementType> = {
-    label: string,
-    variant: ButtonType,
-    colorIndex: IColorIndex,
+    variant?: ButtonType,
+    colorIndex?: IColorIndex,
     isDisabled?: boolean,
     isChecked?: boolean,
-    Icon?: SvgrComponent,
+    icon?: ReactElement<any, any>,
+    defaultIconStyles?: boolean,
+    children?: ReactNode
     as?: E
 }
 
@@ -27,14 +28,15 @@ const defaultElement = "button";
 
 const Button: FC<ButtonProps<ElementType>> = <E extends ElementType = typeof defaultElement>(
     {
-        label,
-        variant,
-        colorIndex,
+        variant = "text",
+        colorIndex = "0",
         isChecked,
         isDisabled,
         as,
-        Icon,
+        icon,
         className,
+        defaultIconStyles,
+        children,
         ...rest
     }: ButtonProps<E>
 ) => {
@@ -42,12 +44,13 @@ const Button: FC<ButtonProps<ElementType>> = <E extends ElementType = typeof def
     const Element = as || defaultElement;
 
     const classNames = [
+        `${className ? className : ""}`,
         classes.container,
         `${classes[variant]}`,
         `${classes[`${colorIndex}_index`]}`,
         `${isChecked ? classes['checked'] : ""}`,
         `${isDisabled ? classes['disabled'] : ""}`,
-        `${className ? className : ""}`
+
 
     ]
 
@@ -56,13 +59,10 @@ const Button: FC<ButtonProps<ElementType>> = <E extends ElementType = typeof def
             className={classNames.join(' ')}
             {...rest}
         >
-            {label}
-            {Icon ?
-                <Icon
-                    className={classes.icon}
-                />
-                :
-                null}
+            {children}
+            {icon&&defaultIconStyles?cloneElement(icon, {
+               className: `${icon.props.className} ${classes.icon}`
+            }):icon}
         </Element>
     );
 };

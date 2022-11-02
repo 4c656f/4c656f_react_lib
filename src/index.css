@@ -26,6 +26,8 @@ body {
 
     --index_2_text: #5C5D66;
 
+    --index_primary_text: #0B6EF9;
+
 }
 
 body[data-theme='light'] {
@@ -49,6 +51,7 @@ body[data-theme='light'] {
 
     --index_2_text: #5C5D66;
 
+    --index_primary_text: #0B6EF9;
 }
 
 body[data-theme='dark'] {
@@ -72,6 +75,8 @@ body[data-theme='dark'] {
     --index_1_text: #9E9E9E;
 
     --index_2_text: #5C5D66;
+
+    --index_primary_text: #0B6EF9;
 }
 
 

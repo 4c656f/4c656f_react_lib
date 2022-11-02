@@ -3,7 +3,7 @@ import classes from './HeaderSection.module.scss'
 
 type headerSectionElems = {
     title?: ReactElement<any, any>;
-    elements?: ReactElement<any, any>| ReactElement<any, any>[]
+    elements?: ReactElement<any, any> | ReactElement<any, any>[]
 }
 
 export type HeaderSectionProps = {
@@ -27,14 +27,25 @@ const HeaderSection: FC<HeaderSectionProps> =
                 className={classes.container}
             >
 
-                {sectionTitle}
+                <div
+                    className={classes.section_title_elements}
+                >
+                    {sectionTitle}
 
-                {headerSectionElems?.map(value => {
-                    return(
-                        value.title,
-                        value.elements
-                    )
-                })}
+                    <div
+                        className={classes.section_element}
+                    >
+
+                        {headerSectionElems?.map(value => {
+                            return (
+                                <>
+                                    {value.title}
+                                    {value.elements}
+                                </>
+                            )
+                        })}
+                    </div>
+                </div>
             </menu>
         );
     };

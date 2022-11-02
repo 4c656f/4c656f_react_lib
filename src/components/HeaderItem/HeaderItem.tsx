@@ -19,17 +19,18 @@ const HeaderItem: FC<HeaderItemProps> = (props: HeaderItemProps) => {
         <section
             className={classes.container}
         >
-            <Button
-                className={classes.button}
-                label={title}
-                variant={'text'}
-                colorIndex={'1'}
-            />
             <section
                 className={classes.section}
             >
                 {children}
             </section>
+            <Button
+                className={classes.button}
+                children={title}
+                variant={'text'}
+                colorIndex={'0'}
+            />
+
         </section>
     );
 };

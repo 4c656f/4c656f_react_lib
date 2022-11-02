@@ -36,8 +36,6 @@
     "mini-css-extract-plugin": "^2.6.1",
     "new-url-loader": "^0.1.1",
     "node-sass": "^7.0.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "sass-loader": "^13.1.0",
     "storybook-css-modules": "^1.0.8",
     "storybook-svgr-react-component": "^1.0.1",

@@ -14,21 +14,21 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Text = Template.bind({});
 Text.args = {
-    label: "Button",
+    children: "Button",
     variant: "text",
     colorIndex: "0"
 };
 
 export const Contained = Template.bind({});
 Contained.args = {
-    label: "Button",
+    children: "Button",
     variant: "contained",
     colorIndex: "0"
 };
 
 export const Outlined = Template.bind({});
 Outlined.args = {
-    label: "Button",
+    children: "Button",
     variant: "outlined",
     colorIndex: "0"
 };
@@ -36,10 +36,21 @@ Outlined.args = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
     style: {width: '100px'},
-    label: "Button",
+    children: "Button",
     variant: "contained",
     colorIndex: "0",
-    Icon: ArrowIcon,
+    icon: <ArrowIcon/>,
+    defaultIconStyles: true
 
+};
+
+export const WithIconPrimary = Template.bind({});
+WithIconPrimary.args = {
+    style: {width: '100px'},
+    children: "Button",
+    variant: "primary",
+    colorIndex: "0",
+    icon: <ArrowIcon/>,
+    defaultIconStyles: true
 };
 

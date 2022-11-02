@@ -149,6 +149,7 @@ $default_transition: 0.3s;
   width: $size;
   transition: $default_transition;
   & path {
+    transition: $default_transition;
     stroke: var(--index_0_text);
   }
 }
