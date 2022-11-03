@@ -1,5 +1,5 @@
 import React, {FC, ReactElement} from 'react';
-import classes from './HeaderSection.module.scss'
+import classes from './HeaderSection.module.css'
 
 
 

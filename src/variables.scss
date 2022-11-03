@@ -1,25 +1,26 @@
+
 // Elements schemes
 
 $index_0_element: (
-        "class_name": "0_index",
+        "class_name": "color_0_index",
         "background" : var(--index_1_color),
         "border" : var(--index_1_color),
         "hover" : var(--index_1_5_color),
 );
 $index_1_element: (
-        "class_name": "1_index",
+        "class_name": "color_1_index",
         "background" : var(--index_3_color),
         "border" : var(--index_3_color),
         "hover" : var(--index_3_5_color),
 );
 $index_2_element: (
-        "class_name": "2_index",
+        "class_name": "color_2_index",
         "background" : var(--index_1_color),
         "border" : var(--index_1_color),
         "hover" : var(--index_1_5_color),
 );
 $index_action_element: (
-        "class_name": "action_index",
+        "class_name": "color_action_index",
         "background" : var(--index_3_color),
         "border" : var(--index_3_color),
         "hover" : var(--index_3_color),

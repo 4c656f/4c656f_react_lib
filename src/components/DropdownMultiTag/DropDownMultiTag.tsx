@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import classes from './DropDownMultiTag.module.scss'
+import classes from './DropDownMultiTag.module.css'
 
 type DropDownMultiTagProps = {
     index: number;

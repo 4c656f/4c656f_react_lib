@@ -1,5 +1,5 @@
 declare module "*.module.scss";
-
+declare module "*.module.css";
 interface SvgrComponent
     extends React.FC<React.SVGAttributes<SVGElement>> {}
 

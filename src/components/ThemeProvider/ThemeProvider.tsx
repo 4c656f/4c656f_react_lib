@@ -1,6 +1,9 @@
 import React, {createContext, FC, useEffect, useState} from 'react';
+import "../../index.css"
 
-interface ThemeProviderProps {
+
+
+type ThemeProviderProps = {
     children: JSX.Element
 }
 

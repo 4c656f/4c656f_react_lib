@@ -12,7 +12,7 @@ import React, {
 } from 'react';
 import {ReactComponent as ArrowIcon} from "../../materials/icons/ArrowSmall.svg"
 
-import classes from "./DropDown.module.scss"
+import classes from "./DropDown.module.css"
 import {IColorIndex} from "../../types/IColorIndex";
 import MenuItem from "../MenuItem/MenuItem";
 import {SearchIcon} from "../../materials/icons";
@@ -194,7 +194,7 @@ const DropDown: FC<DropDownProps> = (props: DropDownProps) => {
         >
 
             <button
-                className={`${classes.toggle} ${classes[size]} ${classes[`${colorIndex}_index`]}`}
+                className={`${classes.toggle} ${classes[size]} ${classes[`color_${colorIndex}_index`]}`}
                 onClick={handleOpen}
             >
                 {

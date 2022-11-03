@@ -1,5 +1,5 @@
 import React, {FC, InputHTMLAttributes} from 'react';
-import classes from './Input.module.scss'
+import classes from './Input.module.css'
 import {IColorIndex} from "../../types/IColorIndex";
 
 type InputOwnProps = {
@@ -25,7 +25,7 @@ const Input: FC<ButtonProps> = (props) => {
 
         <div className={classes.main_container}>
             <input
-                className={`${defaultClasses.join(" ")} ${colorIndex ? classes[`${colorIndex}_index`] : classes["0_index"]} ${className ? className : ""}`}
+                className={`${defaultClasses.join(" ")} ${colorIndex ? classes[`color_${colorIndex}_index`] : classes["color_0_index"]} ${className ? className : ""}`}
                 type={'text'}
 
                 {...rest}

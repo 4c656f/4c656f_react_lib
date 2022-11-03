@@ -6,7 +6,8 @@
   "scripts": {
     "storybook": "start-storybook -p 6006 -c .storybook",
     "build-storybook": "build-storybook -c .storybook",
-    "pub": "webpack && npm version patch && npm publish"
+    "pub": "webpack && npm version patch && npm publish",
+    "sass": "sass --watch src/:src/"
   },
   "author": "4c656f",
   "repository": {
@@ -39,6 +40,7 @@
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
     "storybook-css-modules": "^1.0.8",
     "storybook-svgr-react-component": "^1.0.1",

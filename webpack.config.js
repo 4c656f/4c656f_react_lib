@@ -56,7 +56,7 @@ module.exports = {
                     {
                         loader: ExtractCssChunks.loader,
                         options: {
-                            publicPath: '/public',
+                            publicPath: '/'
                         },
                     },
                     "css-loader"
@@ -82,7 +82,7 @@ module.exports = {
                     {
                         loader: ExtractCssChunks.loader,
                         options: {
-                            publicPath: '/public',
+                            publicPath: '/'
                         },
                     },
                     {
@@ -102,7 +102,7 @@ module.exports = {
                     {
                         loader: ExtractCssChunks.loader,
                         options: {
-                            publicPath: '/public',
+                            publicPath: '/'
                         },
                     },
                     "css-loader",

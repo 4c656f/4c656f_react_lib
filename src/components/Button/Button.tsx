@@ -1,5 +1,5 @@
 import React, {cloneElement, ComponentProps, ElementType, FC, ReactElement, ReactNode} from 'react';
-import classes from "./Button.module.scss"
+import classes from "./Button.module.css"
 import {IColorIndex} from "../../types/IColorIndex";
 import {ButtonType} from "../../types/IElementType";
 import {IElementsSize} from "../../types/IElementsSize";
@@ -51,7 +51,7 @@ const Button = <E extends ElementType = typeof defaultElement>(
         classes.container,
         `${classes[variant]}`,
         `${classes[size]}`,
-        `${classes[`${colorIndex}_index`]}`,
+        `${classes[`color_${colorIndex}_index`]}`,
         `${isChecked ? classes['checked'] : ""}`,
         `${isDisabled ? classes['disabled'] : ""}`,
 

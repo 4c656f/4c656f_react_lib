@@ -9,7 +9,7 @@ import React, {
     ReactElement, useEffect
 } from 'react';
 import HeaderItem from '../HeaderItem/HeaderItem';
-import classes from './Header.module.scss'
+import classes from './Header.module.css'
 
 type props = {
     children: ReactElement[]

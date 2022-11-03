@@ -1,6 +1,6 @@
 import React, {FC, ReactElement} from 'react';
 import Button from "../Button/Button";
-import classes from './HeaderItem.module.scss'
+import classes from './HeaderItem.module.css'
 
 export type HeaderItemProps = {
     title: string;

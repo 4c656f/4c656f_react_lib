@@ -1,5 +1,5 @@
 import React, {forwardRef, PropsWithChildren} from 'react';
-import classes from "./MenuItem.module.scss"
+import classes from "./MenuItem.module.css"
 
 type MenuItemProps = {
     disabled?: boolean,
