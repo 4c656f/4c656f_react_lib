@@ -1,10 +1,6 @@
 const path = require('path');
 const CopyPlugin = require("copy-webpack-plugin");
-
-
-
-
-
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 
 
 module.exports = {
@@ -27,6 +23,12 @@ module.exports = {
                     to: path.resolve(__dirname, 'dist')
                 }
             ],
+        }),
+        new ExtractCssChunks({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: '[name].css',
+            chunkFilename: '[id].css',
         }),
     ],
     resolve: {
@@ -51,7 +53,12 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    "style-loader",
+                    {
+                        loader: ExtractCssChunks.loader,
+                        options: {
+                            publicPath: '/public',
+                        },
+                    },
                     "css-loader"
                 ]
             },
@@ -72,7 +79,12 @@ module.exports = {
             {
                 test: /\.module\.scss$/,
                 use: [
-                    "style-loader",
+                    {
+                        loader: ExtractCssChunks.loader,
+                        options: {
+                            publicPath: '/public',
+                        },
+                    },
                     {
                         loader: "css-loader",
                         options: {
@@ -86,12 +98,21 @@ module.exports = {
 
             {
                 test: /\.scss$/,
-                use: ["style-loader", "css-loader", 'sass-loader'],
+                use: [
+                    {
+                        loader: ExtractCssChunks.loader,
+                        options: {
+                            publicPath: '/public',
+                        },
+                    },
+                    "css-loader",
+                    'sass-loader'],
                 exclude: /\.module\.scss$/
             },
             {
                 test: /\.(ts|tsx)?$/,
                 use: ['ts-loader'],
+                sideEffects: false,
                 exclude: /\.stories\.tsx$/
             },
             {

@@ -21,8 +21,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
     }
 
     useEffect(() => {
-        console.log('mount')
-        // document.body.dataset.theme = isDark ? 'dark' : 'light'
+        document.body.dataset.theme = isDark ? 'dark' : 'light'
     }, [isDark])
 
     return (

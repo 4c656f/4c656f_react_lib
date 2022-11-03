@@ -5,7 +5,7 @@ import {ButtonType} from "../../types/IElementType";
 import {IElementsSize} from "../../types/IElementsSize";
 
 
-type customElementsPick = JSX.IntrinsicElements['button' | 'a'];
+
 
 
 type ButtonCustomProps<E extends ElementType = ElementType> = {
