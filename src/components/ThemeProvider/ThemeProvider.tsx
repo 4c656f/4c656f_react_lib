@@ -1,19 +1,22 @@
 import React, {createContext, FC, useEffect, useState} from 'react';
+import "../../index.css"
 
 interface ThemeProviderProps {
     children: JSX.Element
 }
-
-
-export const ThemeContext = createContext({
+export interface IThemeContext {
+    isDark: boolean,
+    toggleTheme: () => void
+}
+const defaultState = {
     isDark: true,
-    toggleTheme: () => {
-    }
-})
+    toggleTheme: () => {}
+}
+export const ThemeContext = createContext<IThemeContext>(defaultState)
 
 const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
 
-    const [isDark, setIsDark] = useState(false)
+    const [isDark, setIsDark] = useState<boolean>(false)
 
 
     const toggleTheme = (): void => {
@@ -25,7 +28,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
     }, [isDark])
 
     return (
-        <ThemeContext.Provider value={{isDark: isDark, toggleTheme: toggleTheme}}>
+        <ThemeContext.Provider value={{isDark: isDark, toggleTheme: toggleTheme} as IThemeContext}>
             {children}
         </ThemeContext.Provider>
     );
