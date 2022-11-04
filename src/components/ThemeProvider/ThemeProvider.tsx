@@ -1,10 +1,10 @@
-import React, {createContext, FC, useEffect, useState} from 'react';
+import React, {createContext, FC, ReactNode, useEffect, useState} from 'react';
 import "../../index.css"
 
 
 
 type ThemeProviderProps = {
-    children: JSX.Element
+    children: ReactNode
 }
 
 
@@ -28,7 +28,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
     }, [isDark])
 
     return (
-        <ThemeContext.Provider value={{isDark: true, toggleTheme: ()=>console.log('toggle')}}>
+        <ThemeContext.Provider value={{isDark: isDark, toggleTheme: toggleTheme}}>
             {children}
         </ThemeContext.Provider>
     );

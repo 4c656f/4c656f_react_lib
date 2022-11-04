@@ -13,6 +13,7 @@ module.exports = {
             name: '4c656f_react_ui_kit',
             type: 'umd',
         },
+        libraryTarget: "umd",
         clean: true
     },
     plugins: [
