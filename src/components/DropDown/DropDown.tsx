@@ -194,7 +194,7 @@ const DropDown: FC<DropDownProps> = (props: DropDownProps) => {
         >
 
             <button
-                className={`${classes.toggle} ${classes[size]} ${classes[`${colorIndex}_index`]}`}
+                className={`${classes.toggle} ${classes[size]} ${classes[`color_${colorIndex}_index`]}`}
                 onClick={handleOpen}
             >
                 {

@@ -1,23 +1,25 @@
-import React, {FC, InputHTMLAttributes} from 'react';
+import React, {cloneElement, FC, InputHTMLAttributes, ReactElement, ReactNode} from 'react';
 import classes from './Input.module.scss'
 import {IColorIndex} from "../../types/IColorIndex";
 
 type InputOwnProps = {
     colorIndex?: IColorIndex;
-    Icon?: SvgrComponent;
+    icon?: ReactElement;
+    defaultIconStyles?:boolean
 }
 
 
 type ButtonProps = InputOwnProps & Omit<InputHTMLAttributes<HTMLInputElement>, keyof InputOwnProps>
 
-const defaultClasses = [classes['container']]
+
 
 const Input: FC<ButtonProps> = (props) => {
 
     const {
-        Icon,
+        icon,
         className,
-        colorIndex,
+        colorIndex = "0",
+        defaultIconStyles,
         ...rest
     } = props
 
@@ -25,18 +27,14 @@ const Input: FC<ButtonProps> = (props) => {
 
         <div className={classes.main_container}>
             <input
-                className={`${defaultClasses.join(" ")} ${colorIndex ? classes[`${colorIndex}_index`] : classes["0_index"]} ${className ? className : ""}`}
+                className={`${classes.container} ${classes[`color_${colorIndex}_index`]} ${className ? className : ""}`}
                 type={'text'}
 
                 {...rest}
             />
-            {Icon ?
-                <Icon
-                    className={classes.icon}
-                />
-                :
-                null
-            }
+            {icon&&defaultIconStyles?cloneElement(icon, {
+                className: `${icon.props.className} ${classes.icon}`
+            }):icon}
         </div>
 
     );

@@ -25,7 +25,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({children}) => {
     }, [isDark])
 
     return (
-        <ThemeContext.Provider value={{isDark: true, toggleTheme: ()=>console.log('toggle')}}>
+        <ThemeContext.Provider value={{isDark: isDark, toggleTheme: toggleTheme}}>
             {children}
         </ThemeContext.Provider>
     );

@@ -53,12 +53,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    {
-                        loader: ExtractCssChunks.loader,
-                        options: {
-                            publicPath: '/public',
-                        },
-                    },
+                    "style-loader",
                     "css-loader"
                 ]
             },
@@ -79,12 +74,7 @@ module.exports = {
             {
                 test: /\.module\.scss$/,
                 use: [
-                    {
-                        loader: ExtractCssChunks.loader,
-                        options: {
-                            publicPath: '/public',
-                        },
-                    },
+                    "style-loader",
                     {
                         loader: "css-loader",
                         options: {
@@ -98,15 +88,7 @@ module.exports = {
 
             {
                 test: /\.scss$/,
-                use: [
-                    {
-                        loader: ExtractCssChunks.loader,
-                        options: {
-                            publicPath: '/public',
-                        },
-                    },
-                    "css-loader",
-                    'sass-loader'],
+                use: ["style-loader", "css-loader", 'sass-loader'],
                 exclude: /\.module\.scss$/
             },
             {

@@ -51,7 +51,7 @@ const Button = <E extends ElementType = typeof defaultElement>(
         classes.container,
         `${classes[variant]}`,
         `${classes[size]}`,
-        `${classes[`${colorIndex}_index`]}`,
+        `${classes[`color_${colorIndex}_index`]}`,
         `${isChecked ? classes['checked'] : ""}`,
         `${isDisabled ? classes['disabled'] : ""}`,
 

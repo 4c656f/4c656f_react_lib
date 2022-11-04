@@ -15,7 +15,7 @@ export const Default = Template.bind({});
 Default.args = {
     placeholder: 'Placeholder',
     style: {width: "300px"},
-    Icon: SearchIcon
+    icon: <SearchIcon/>
 };
 
 
