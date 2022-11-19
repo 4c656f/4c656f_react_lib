@@ -1,3 +1,4 @@
+@import './variables.scss';
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -92,4 +93,41 @@ body[data-theme='dark'] {
     src: url("fonts/BasierSquare-Bold.woff2") format('woff2');
     src: url("fonts/BasierSquare-Regular.woff2") format('woff2');
     src: url("fonts/BasierSquare-Italic.woff2") format('woff2');
+}
+h1 {
+    all: unset;
+
+    color: var(--index_0_text);
+    @include default_h1()
+}
+
+h2 {
+    all: unset;
+    color: var(--index_0_text);
+    @include default_h2()
+}
+
+h3 {
+    all: unset;
+    color: var(--index_0_text);
+    @include default_h3()
+}
+
+h4 {
+    all: unset;
+    color: var(--index_0_text);
+    @include default_h4()
+}
+
+span {
+    all: unset;
+
+    color: var(--index_0_text);
+    @include default_h4();
+
+}
+
+a {
+    color: var(--index_0_text);
+    @include default_h4();
 }

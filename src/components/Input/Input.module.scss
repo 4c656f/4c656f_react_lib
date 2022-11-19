@@ -43,6 +43,15 @@
     }
   }
 }
+.small{
+  @include small_padding;
+}
+.medium{
+  @include medium_padding;
+}
+.large{
+  @include large_padding;
+}
 .icon{
 
   @include default_svg_layout;

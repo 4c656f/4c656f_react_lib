@@ -165,10 +165,10 @@ $default_transition: 0.3s;
 }
 
 
-@mixin styling_scrollbar(){
+@mixin styling_scrollbar($color_index:1, $scroll_bar_width: 8px, $scroll_bar_thumb_width: 2.5px){
   /* width */
   &::-webkit-scrollbar {
-    width: 8px;
+    width: $scroll_bar_width;
 
   }
 
@@ -182,10 +182,10 @@ $default_transition: 0.3s;
   /* Handle */
   &::-webkit-scrollbar-thumb {
 
-    border: 2.5px solid rgba(0, 0, 0, 0);
+    border: $scroll_bar_thumb_width solid rgba(0, 0, 0, 0);
     background-clip: padding-box;
 
-    background-color: var(--index_2_color);
+    background-color: var(--index_#{$color_index}_color);
 
 
 

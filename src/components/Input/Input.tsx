@@ -1,10 +1,12 @@
 import React, {cloneElement, FC, InputHTMLAttributes, ReactElement, ReactNode} from 'react';
 import classes from './Input.module.scss'
 import {IColorIndex} from "../../types/IColorIndex";
+import {IElementsSize} from "../../types/IElementsSize";
 
 type InputOwnProps = {
     colorIndex?: IColorIndex;
     icon?: ReactElement;
+    size?: IElementsSize,
     defaultIconStyles?:boolean
 }
 
@@ -19,15 +21,23 @@ const Input: FC<ButtonProps> = (props) => {
         icon,
         className,
         colorIndex = "0",
+        size = 'medium',
         defaultIconStyles,
         ...rest
     } = props
+
+    const inputClasses = [
+        classes.container,
+        `${classes[`color_${colorIndex}_index`]}`,
+        `${className ? className : ""}`,
+        classes[size]
+    ]
 
     return (
 
         <div className={classes.main_container}>
             <input
-                className={`${classes.container} ${classes[`color_${colorIndex}_index`]} ${className ? className : ""}`}
+                className={inputClasses.join(' ')}
                 type={'text'}
 
                 {...rest}

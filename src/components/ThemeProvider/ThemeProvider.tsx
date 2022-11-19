@@ -1,5 +1,5 @@
 import React, {createContext, FC, useEffect, useState} from 'react';
-import "../../index.css"
+import "../../index.scss"
 
 interface ThemeProviderProps {
     children: JSX.Element

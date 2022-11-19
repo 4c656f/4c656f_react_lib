@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "esNext",
     "module": "commonjs",
     "jsx": "react",
     "strict": true,
     "esModuleInterop": true,
     "lib": [ "es2015", "dom" ],
     "outDir": "./dist/",
-    "sourceMap": false,
-    "declaration": true,
-
+    "sourceMap": true,
+    "declaration": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "./src/stories", "**/*.stories.tsx"]

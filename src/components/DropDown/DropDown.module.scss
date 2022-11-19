@@ -100,7 +100,7 @@
   flex-direction: column;
   grid-gap: 4px;
 
-  @include styling_scrollbar;
+  @include styling_scrollbar($color_index:2);
 
   &.hide{
     animation-name: hide;
